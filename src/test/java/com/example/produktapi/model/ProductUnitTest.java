@@ -38,6 +38,17 @@ public class ProductUnitTest {
         double price = product.getPrice();
         Assertions.assertEquals(200.00, price);
     }
+    @Test
+    public void GetImageTest(){
+        product.setImage("https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg");
+        Assertions.assertEquals("https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",product.getImage());
+    }
+    @Test
+    public void GetDescriptionTest(){
+        product.setDescription("sldjdsfvndlkvnfdlvjfjl");
+        Assertions.assertEquals("sldjdsfvndlkvnfdlvjfjl",product.getDescription());
+    }
+
 
 }
 
