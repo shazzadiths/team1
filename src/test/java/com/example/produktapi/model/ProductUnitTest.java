@@ -1,4 +1,5 @@
 package com.example.produktapi.model;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.junit.jupiter.api.Assertions;
@@ -18,12 +19,22 @@ public class ProductUnitTest {
 
     @Test
     void CheckProductTitle() {
-        product.setTitle("Powerboots Original Stövlar");
-      String newtitle = product.getTitle();
-      Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
+    product.setTitle("Powerboots Original Stövlar");
+    String newtitle = product.getTitle();
+    Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
 // Test commit
     }
+
+    @Test
+    //EmmaDahl
+    void CheckGetCategory(){
+    product.setCategory("Jewelery");
+    String getCategory = product.getCategory();
+    Assertions.assertEquals(getCategory, "Jewelery");
+    }
+}
+
+
    
 
 
-}
