@@ -14,9 +14,6 @@ public class ProductUnitTest {
 
     Product product = new Product();
 
-    //public Product(String title, Double price, String category, String description, String image)
-
-
     @Test
     void CheckProductTitle() {
     product.setTitle("Powerboots Original Stövlar");
@@ -32,6 +29,16 @@ public class ProductUnitTest {
     String getCategory = product.getCategory();
     Assertions.assertEquals(getCategory, "Jewelery");
     }
+
+    @Test
+//Somayeh
+    public void testGetPrise(){
+
+        product.setPrice(200.00);
+        double price = product.getPrice();
+        Assertions.assertEquals(200.00, price);
+    }
+
 }
 
 
