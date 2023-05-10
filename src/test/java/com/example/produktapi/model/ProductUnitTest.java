@@ -14,9 +14,6 @@ public class ProductUnitTest {
 
     Product product = new Product();
 
-    //public Product(String title, Double price, String category, String description, String image)
-
-
     @Test
     void CheckProductTitle() {
     product.setTitle("Powerboots Original Stövlar");
