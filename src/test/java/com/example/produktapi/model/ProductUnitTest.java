@@ -32,6 +32,16 @@ public class ProductUnitTest {
     String getCategory = product.getCategory();
     Assertions.assertEquals(getCategory, "Jewelery");
     }
+
+    @Test
+//Somayeh
+    public void testGetPrise(){
+
+        product.setPrice(200.00);
+        double price = product.getPrice();
+        Assertions.assertEquals(200.00, price);
+    }
+
 }
 
 
