@@ -25,6 +25,7 @@ import java.util.List;
     List<String> categoriesList;
     List<String> availableCategories = List.of("electronics", "jewelery", "men's clothing", "women's clothing");
     List<Integer> availableCategoriesSize = List.of(6, 4, 4, 6);
+   // Product product;
 
     @BeforeEach
     void setup() {
@@ -84,5 +85,7 @@ import java.util.List;
         Assert.assertEquals(productService.getProductsByCategory(null).size(), 0);
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
+
+
 
 }
