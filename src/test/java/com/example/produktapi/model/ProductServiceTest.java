@@ -1,6 +1,7 @@
 package com.example.produktapi.model;
 
 
+import com.example.produktapi.exception.EntityNotFoundException;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
 import com.example.produktapi.service.ProductService;
@@ -25,7 +26,7 @@ import java.util.List;
     List<String> categoriesList;
     List<String> availableCategories = List.of("electronics", "jewelery", "men's clothing", "women's clothing");
     List<Integer> availableCategoriesSize = List.of(6, 4, 4, 6);
-   // Product product;
+    Product product;
 
     @BeforeEach
     void setup() {
@@ -86,6 +87,42 @@ import java.util.List;
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
 
+    @Test
+    void verifyDeletionOfUnavailableProductId(){
+        int productCount= productService.getAllProducts().size();
+        Assert.assertThrows(EntityNotFoundException.class, () -> productService.deleteProduct(21));
+    }
+    @Test
+    void verifyAddAndRemoveProduct() {
+        int currentProductCount = productService.getAllProducts().size();
+        productService.addProduct(new Product("ring",45.00,"jewelery","nice ring with nice stone","https://www.google.se/search?q=rings+with+stone%C2%A8&tbm=isch&chips=q:ring+with+stone,g_1:simple:iEIQHBiCfmc%3D&hl=en&sa=X&ved=2ahUKEwiL0LKSmu_-AhWIyyoKHeHgDCwQ4lYoA3oECAEQMg&biw=1519&bih=753#imgrc=fW7h2PwMnvb_TM"));
+        int newProductCount = productService.getAllProducts().size();
+        Assert.assertTrue(currentProductCount < newProductCount);
+        Assert.assertEquals(newProductCount , 21);
+        Assert.assertEquals(productService.getProductsByCategory("jewelery").size(), 5);
+        productService.deleteProduct(21);
+        int updatedProductCount = productService.getAllProducts().size();
+        Assert.assertFalse(updatedProductCount > newProductCount);
+        Assert.assertEquals(updatedProductCount,currentProductCount);
+    }/*
+   @Test
+    void verifyUpdatingAProduct(){
+        Product currentProduct = productService.getProductById(2);
+       System.out.println(currentProduct.getPrice());
+        double currentPrice = currentProduct.getPrice();
+        Product newProduct = new Product(currentProduct.getTitle(), 443.24, currentProduct.getCategory(), currentProduct.getDescription(), currentProduct.getImage());
+        productService.updateProduct(newProduct, 2);
+        Product updateProduct = productService.getProductById(2);
+       System.out.println(updateProduct.getPrice());
+       // Assert.assertNotEquals(currentPrice, updateProduct.getPrice());
+   }*/
 
+    /*@Test
+    void verifyRemoveProductById(){
+        int productCount= productService.getAllProducts().size();
+        productService.deleteProduct(21);
+        int updatedProductCount= productService.getAllProducts().size();
+        Assert.assertEquals(productCount>updatedProductCount,20);
+    }*/
 
 }
