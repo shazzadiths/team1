@@ -15,6 +15,7 @@ public class ProductUnitTest {
     Product product = new Product();
 
     @Test
+    //Shazzad
     void CheckProductTitle() {
     product.setTitle("Powerboots Original Stövlar");
     String newtitle = product.getTitle();
@@ -38,6 +39,8 @@ public class ProductUnitTest {
         double price = product.getPrice();
         Assertions.assertEquals(200.00, price);
     }
+
+
 
 }
 
