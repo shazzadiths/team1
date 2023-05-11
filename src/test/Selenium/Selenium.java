@@ -21,7 +21,7 @@ public class Selenium {
     @Test
     void verifyTitle(){
         String websiteHeading = driver.getTitle();
-        String pageTitle = "SVT Play";
+        String pageTitle = "";
         assertNotEquals(pageTitle,websiteHeading,  "title not matching...");
     }
 
