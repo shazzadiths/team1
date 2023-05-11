@@ -22,7 +22,12 @@ public class ProductUnitTest {
     Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
 // Test commit
     }
-
+    @Test
+    void CheckProductDescription() {
+        product.setDescription("Automatiserad testning och testverktyg");
+        String newDesc = product.getDescription();
+        Assertions.assertEquals( newDesc,"Automatiserad testning och testverktyg");
+    }
     @Test
     //EmmaDahl
     void CheckGetCategory(){
@@ -33,7 +38,7 @@ public class ProductUnitTest {
 
     @Test
 //Somayeh
-    public void testGetPrise(){
+    public void testGetPrice(){
 
         product.setPrice(200.00);
         double price = product.getPrice();
