@@ -39,10 +39,19 @@ public class ProductUnitTest {
         double price = product.getPrice();
         Assertions.assertEquals(200.00, price);
     }
-
-
-
+//Vijaya
+    @Test
+    public void testGetID(){
+        product.setId(101);
+        Assertions.assertEquals(Integer.valueOf(101),product.getId());
+    }
+    @Test
+    public void testGetImage(){
+        product.setImage("https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg");
+        Assertions.assertEquals("https://fakestoreapi.com/img/51Y5NI-I5jL._AC_UX679_.jpg",product.getImage());
+    }
 }
+
 
 
    
