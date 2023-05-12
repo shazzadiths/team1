@@ -29,7 +29,7 @@ public class ProductUnitTest {
         Assertions.assertEquals( newDesc,"Automatiserad testning och testverktyg");
     }
     @Test
-    //EmmaDahl
+    //EmmaDahl 
     void CheckGetCategory(){
     product.setCategory("Jewelery");
     String getCategory = product.getCategory();
