@@ -1,22 +1,28 @@
 package com.example.produktapi.service;
 
 
+import com.example.produktapi.exception.EntityNotFoundException;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
 import com.example.produktapi.service.ProductService;
 import org.junit.Assert;
+import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
+import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
- class ProductServiceTest {
+class ProductServiceTest {
 
     @Autowired
     ProductRepository repository;
@@ -85,4 +91,23 @@ import java.util.List;
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
 
+
+    @Test
+
+    public void testGetProductById() {
+
+        Product result = productService.getProductById(3);
+        Assertions.assertEquals("Mens Cotton Jacket", result.getTitle());
+
+    }
+
+    @Test
+
+    public void testInvalidId() {
+        Integer invalidId = 21;
+        Assertions.assertThrows(EntityNotFoundException.class, () -> {
+            productService.getProductById(invalidId);
+        });
+    }
 }
+
