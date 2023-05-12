@@ -104,25 +104,18 @@ import java.util.List;
         int updatedProductCount = productService.getAllProducts().size();
         Assert.assertFalse(updatedProductCount > newProductCount);
         Assert.assertEquals(updatedProductCount,currentProductCount);
-    }/*
+    }
+
+
    @Test
     void verifyUpdatingAProduct(){
         Product currentProduct = productService.getProductById(2);
-       System.out.println(currentProduct.getPrice());
         double currentPrice = currentProduct.getPrice();
         Product newProduct = new Product(currentProduct.getTitle(), 443.24, currentProduct.getCategory(), currentProduct.getDescription(), currentProduct.getImage());
         productService.updateProduct(newProduct, 2);
         Product updateProduct = productService.getProductById(2);
-       System.out.println(updateProduct.getPrice());
-       // Assert.assertNotEquals(currentPrice, updateProduct.getPrice());
-   }*/
+        // Assert.assertNotEquals(currentPrice, updateProduct.getPrice());
+   }
 
-    /*@Test
-    void verifyRemoveProductById(){
-        int productCount= productService.getAllProducts().size();
-        productService.deleteProduct(21);
-        int updatedProductCount= productService.getAllProducts().size();
-        Assert.assertEquals(productCount>updatedProductCount,20);
-    }*/
 
 }
