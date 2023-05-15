@@ -22,7 +22,7 @@ public class ProductUnitTest {
     Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
 // Test commit
     }
-
+    
     @Test
     void CheckProductDescription() {
         product.setDescription("Automatiserad testning och testverktyg");
@@ -45,6 +45,7 @@ public class ProductUnitTest {
         double price = product.getPrice();
         Assertions.assertEquals(200.00, price);
     }
+   
 //Vijaya
     @Test
     public void testGetID(){
