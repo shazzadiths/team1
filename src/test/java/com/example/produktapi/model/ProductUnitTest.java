@@ -22,6 +22,7 @@ public class ProductUnitTest {
     Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
 // Test commit
     }
+    
     @Test
     void CheckProductDescription() {
         product.setDescription("Automatiserad testning och testverktyg");
@@ -29,7 +30,7 @@ public class ProductUnitTest {
         Assertions.assertEquals( newDesc,"Automatiserad testning och testverktyg");
     }
     @Test
-    //EmmaDahl
+    //EmmaDahl 
     void CheckGetCategory(){
     product.setCategory("Jewelery");
     String getCategory = product.getCategory();
@@ -44,22 +45,7 @@ public class ProductUnitTest {
         double price = product.getPrice();
         Assertions.assertEquals(200.00, price);
     }
-
-    @Test
-    void verifyGetDescription(){
-        product.setDescription("Original and certified");
-        String description = product.getDescription();
-        Assertions.assertEquals("Original and certified", description);
-    }
-
-    @Test
-    void verifyImage(){
-        product.setImage("https://www.google.se/search?q=st%C3%B6vlar+earrings&tbm=isch&ved=2ahUKEwi-uey4rO_-AhXDxCoKHRX9C7AQ2-cCegQIABAA&oq=st%C3%B6vlar+earrings&gs_lcp=CgNpbWcQAzoECCMQJzoFCAAQgAQ6BggAEAcQHjoECAAQHjoGCAAQBRAeOgYIABAIEB5QnAJY3xRg-RZoAHAAeACAAUuIAawFkgECMTCYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=zPZdZL6jI8OJqwGV-q-ACw&bih=753&biw=1536#imgrc=hosFOBPchvEXnM");
-        String Image = product.getImage();
-        Assertions.assertEquals("https://www.google.se/search?q=st%C3%B6vlar+earrings&tbm=isch&ved=2ahUKEwi-uey4rO_-AhXDxCoKHRX9C7AQ2-cCegQIABAA&oq=st%C3%B6vlar+earrings&gs_lcp=CgNpbWcQAzoECCMQJzoFCAAQgAQ6BggAEAcQHjoECAAQHjoGCAAQBRAeOgYIABAIEB5QnAJY3xRg-RZoAHAAeACAAUuIAawFkgECMTCYAQCgAQGqAQtnd3Mtd2l6LWltZ8ABAQ&sclient=img&ei=zPZdZL6jI8OJqwGV-q-ACw&bih=753&biw=1536#imgrc=hosFOBPchvEXnM", Image);
-    }
-
-
+   
 //Vijaya
     @Test
     public void testGetID(){
