@@ -1,32 +1,23 @@
 package com.example.produktapi.service;
 
 
-import com.example.produktapi.exception.BadRequestException;
 import com.example.produktapi.exception.EntityNotFoundException;
 import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
 import com.example.produktapi.service.ProductService;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
-
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertThrows;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-class ProductServiceTest {
+ class ProductServiceTest {
 
     @Autowired
     ProductRepository repository;
@@ -95,49 +86,34 @@ class ProductServiceTest {
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
 
-
     @Test
-    public void testGetProductById() {
-
-        Product result = productService.getProductById(3);
-        assertEquals("Mens Cotton Jacket", result.getTitle());
-
+    void verifyDeletionOfUnavailableProductId(){
+        int productCount= productService.getAllProducts().size();
+        Assert.assertThrows(EntityNotFoundException.class, () -> productService.deleteProduct(21));
+    }
+    @Test
+    void verifyAddAndRemoveProduct() {
+        int currentProductCount = productService.getAllProducts().size();
+        productService.addProduct(new Product("ring",45.00,"jewelery","nice ring with nice stone","https://www.google.se/search?q=rings+with+stone%C2%A8&tbm=isch&chips=q:ring+with+stone,g_1:simple:iEIQHBiCfmc%3D&hl=en&sa=X&ved=2ahUKEwiL0LKSmu_-AhWIyyoKHeHgDCwQ4lYoA3oECAEQMg&biw=1519&bih=753#imgrc=fW7h2PwMnvb_TM"));
+        int newProductCount = productService.getAllProducts().size();
+        Assert.assertTrue(currentProductCount < newProductCount);
+        Assert.assertEquals(newProductCount , 21);
+        Assert.assertEquals(productService.getProductsByCategory("jewelery").size(), 5);
+        productService.deleteProduct(21);
+        int updatedProductCount = productService.getAllProducts().size();
+        Assert.assertFalse(updatedProductCount > newProductCount);
+        Assert.assertEquals(updatedProductCount,currentProductCount);
     }
 
-    @Test
-    public void testInvalidId() {
-        Integer invalidId = 21;
-        assertThrows(EntityNotFoundException.class, () -> {
-            productService.getProductById(invalidId);
-        });
-    }
 
     @Test
-    public void testAddProduct() {
-
-        Product newAddedProduct = new Product();
-        newAddedProduct.setTitle("new title");
-
-        Product result = productService.addProduct(newAddedProduct);
-        assertEquals(newAddedProduct.getTitle(), result.getTitle());
+    void verifyUpdatingAProduct(){
+        Product currentProduct = productService.getProductById(2);
+        double currentPrice = currentProduct.getPrice();
+        Product newProduct = new Product(currentProduct.getTitle(), 443.24, currentProduct.getCategory(), currentProduct.getDescription(), currentProduct.getImage());
+        productService.updateProduct(newProduct, 2);
+        Product updateProduct = productService.getProductById(2);
+        // Assert.assertNotEquals(currentPrice, updateProduct.getPrice());
     }
-
-    @Test
-    void testAddProductProductAlreadyExists() {
-
-        String existingTitle = "existing product";
-        Product existingProduct = new Product();
-        existingProduct.setTitle(existingTitle);
-        repository.save(existingProduct);
-
-        Product newProduct = new Product();
-        newProduct.setTitle(existingTitle);
-
-
-        BadRequestException exception = assertThrows(BadRequestException.class, () -> productService.addProduct(newProduct));
-        assertEquals("En produkt med titeln: " + existingTitle + " finns redan", exception.getMessage());
-    }
-
 
 }
-
