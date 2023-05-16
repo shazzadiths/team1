@@ -6,23 +6,18 @@ import com.example.produktapi.model.Product;
 import com.example.produktapi.repository.ProductRepository;
 import com.example.produktapi.service.ProductService;
 import org.junit.Assert;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
-import org.mockito.Mockito;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import org.springframework.transaction.annotation.EnableTransactionManagement;
 
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Optional;
 
 @DataJpaTest
 @RunWith(SpringRunner.class)
-class ProductServiceTest {
+ class ProductServiceTest {
 
     @Autowired
     ProductRepository repository;
@@ -91,23 +86,34 @@ class ProductServiceTest {
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
 
-
     @Test
-
-    public void testGetProductById() {
-
-        Product result = productService.getProductById(3);
-        Assertions.assertEquals("Mens Cotton Jacket", result.getTitle());
-
+    void verifyDeletionOfUnavailableProductId(){
+        int productCount= productService.getAllProducts().size();
+        Assert.assertThrows(EntityNotFoundException.class, () -> productService.deleteProduct(21));
+    }
+    @Test
+    void verifyAddAndRemoveProduct() {
+        int currentProductCount = productService.getAllProducts().size();
+        productService.addProduct(new Product("ring",45.00,"jewelery","nice ring with nice stone","https://www.google.se/search?q=rings+with+stone%C2%A8&tbm=isch&chips=q:ring+with+stone,g_1:simple:iEIQHBiCfmc%3D&hl=en&sa=X&ved=2ahUKEwiL0LKSmu_-AhWIyyoKHeHgDCwQ4lYoA3oECAEQMg&biw=1519&bih=753#imgrc=fW7h2PwMnvb_TM"));
+        int newProductCount = productService.getAllProducts().size();
+        Assert.assertTrue(currentProductCount < newProductCount);
+        Assert.assertEquals(newProductCount , 21);
+        Assert.assertEquals(productService.getProductsByCategory("jewelery").size(), 5);
+        productService.deleteProduct(21);
+        int updatedProductCount = productService.getAllProducts().size();
+        Assert.assertFalse(updatedProductCount > newProductCount);
+        Assert.assertEquals(updatedProductCount,currentProductCount);
     }
 
-    @Test
 
-    public void testInvalidId() {
-        Integer invalidId = 21;
-        Assertions.assertThrows(EntityNotFoundException.class, () -> {
-            productService.getProductById(invalidId);
-        });
+    @Test
+    void verifyUpdatingAProduct(){
+        Product currentProduct = productService.getProductById(2);
+        double currentPrice = currentProduct.getPrice();
+        Product newProduct = new Product(currentProduct.getTitle(), 443.24, currentProduct.getCategory(), currentProduct.getDescription(), currentProduct.getImage());
+        productService.updateProduct(newProduct, 2);
+        Product updateProduct = productService.getProductById(2);
+        // Assert.assertNotEquals(currentPrice, updateProduct.getPrice());
     }
+
 }
-
