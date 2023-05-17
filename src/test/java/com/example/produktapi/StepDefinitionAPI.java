@@ -30,6 +30,13 @@ public class StepDefinitionAPI {
     private static Response response;
 
 
+
+
+    //Emma Dahl
+
+
+
+
     @When("User make GET-request to {string}")
     public void user_make_get_request_to(String endpoint) {
         baseURI = endpoint;
@@ -44,7 +51,8 @@ public class StepDefinitionAPI {
         assertEquals(expectedStatusCode, actualStatusCode, "The status code is not correct");
     }
 
-
+//somayeh
+  
     @Given("the API is running")
     public void theAPIIsRunning() {
         //given().contentType(ContentType.JSON);
@@ -72,7 +80,6 @@ public class StepDefinitionAPI {
     }
 
 
-
     @When("user do a Get-request to {string} to navigate to page jewelery")
     public void userDoAGetRequestToToNavigateToPageJewelery(String endpoint) {
         response = RestAssured.get(endpoint);
@@ -92,7 +99,6 @@ public class StepDefinitionAPI {
         assertNotNull(productList);
         assertFalse(productList.isEmpty());
     }
-
 
 
 }
