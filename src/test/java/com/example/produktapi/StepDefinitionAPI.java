@@ -29,7 +29,6 @@ public class StepDefinitionAPI {
     private static RequestSpecification request;
     private static Response response;
 
-
     @When("User make GET-request to {string}")
     public void user_make_get_request_to(String endpoint) {
         baseURI = endpoint;
