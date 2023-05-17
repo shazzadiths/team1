@@ -29,6 +29,14 @@ public class StepDefinitionAPI {
     private static RequestSpecification request;
     private static Response response;
 
+
+
+
+    //Emma Dahl
+
+
+
+
     @When("User make GET-request to {string}")
     public void user_make_get_request_to(String endpoint) {
         baseURI = endpoint;
@@ -43,7 +51,8 @@ public class StepDefinitionAPI {
         assertEquals(expectedStatusCode, actualStatusCode, "The status code is not correct");
     }
 
-
+//somayeh
+  
     @Given("the API is running")
     public void theAPIIsRunning() {
         //given().contentType(ContentType.JSON);
