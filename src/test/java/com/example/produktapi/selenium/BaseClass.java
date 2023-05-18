@@ -38,6 +38,7 @@ public class BaseClass {                    //Shazzad
 
     private  static  WebDriver GetChromeDriver(){
         driver = new ChromeDriver(GetChromeOptions() );
+        driver.manage().timeouts().pageLoadTimeout(6, TimeUnit.SECONDS);
         return driver;
     }
     private  static  WebDriver GetEdgeDriver(){
@@ -54,7 +55,10 @@ public class BaseClass {                    //Shazzad
        // GetEdgeDriver().get(url);
        // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
     }
-
+    public static void waitVisibilityOfElementByCss(String url){
+        WebDriverWait wait1 = new WebDriverWait(BaseClass.driver, Duration.ofSeconds(15));
+        wait1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(url)));
+    }
 
 
 }
