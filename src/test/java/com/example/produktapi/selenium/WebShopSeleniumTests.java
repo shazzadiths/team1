@@ -12,6 +12,7 @@ import java.time.Duration;
 import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 public class WebShopSeleniumTests {
     BaseClass baseClass = new BaseClass();
@@ -24,7 +25,7 @@ public class WebShopSeleniumTests {
         }
 
     @Test
-    public void verifyWebshopTitle(){  //Shazzad
+    public void verifyWebShopTitle(){  //Shazzad
         String pageTitle=  BaseClass.driver.getTitle();
         assertEquals("Webbutiken", pageTitle);
     }
@@ -57,15 +58,56 @@ public class WebShopSeleniumTests {
         assertEquals(20, allproductsList.size(), "Antalet Program har andrät ...");  //
     }
     @Test
-    void verifyHomeButtonFromOtherPage(){ //Shazzad
+    void verifyHomeButtonFromOtherPage() { //Shazzad
 
         verifyShopButtonNavigateToAllProductsPage();
         WebElement home = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"index.html\"]"));
         home.click();
         WebElement homeH2 = BaseClass.driver.findElement(By.cssSelector("h2.lh-1")); //tag.classname
         assertEquals("This shop is all you need", homeH2.getText());
-
     }
+    @Test
+    void verifyNumberOfCategoriesInShop(){ //Emma
+
+        verifyShopButtonNavigateToAllProductsPage();
+        List<WebElement> categoryItems = BaseClass.driver.findElements(By.className("link-body-emphasis"));
+        assertEquals(5, categoryItems.size(),"The number of categories does not match");
+    }
+    @Test
+    void verifyButtonMensClothing(){ //Emma
+
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement mensClothingButton = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(2) > a"));
+        mensClothingButton.click();
+        WebElement all = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('all')"));
+        String pagetext =all.getText();
+        assertEquals("All", pagetext);
+    }
+    @Test
+    void checkWomanClothingLinkText (){ //Emma
+
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement womanClothes = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(3) > a"));
+        String womanLinkText = womanClothes.getText();
+        assertEquals("Women's clothing", womanLinkText, "Text does not match");
+    }
+    @Test
+    void verifyCheckOutButton (){ //Emma
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement validateText = BaseClass.driver.findElement(By.cssSelector("body > main > div.py-5.text-center > h2"));
+        assertEquals("Checkout form", validateText.getText());
+    }
+    @Test
+    void checkIfJewelryLinkTextIsDisplayed(){ //Emma
+
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement jewelryLink = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(4) > a"));
+        boolean jewelryLinkText = jewelryLink.isDisplayed();
+        assertTrue(jewelryLinkText, "Text is not visible");
+    }
+
+
 
 
 
