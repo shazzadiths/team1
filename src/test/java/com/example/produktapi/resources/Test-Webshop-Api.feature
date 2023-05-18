@@ -1,8 +1,8 @@
 #// Emma2
 Feature: Test WebShop API
   Scenario: WebShop API should respond with status code 200 on get request
-    When User make GET-request to "https://fakestoreapi.com/"
-  #  When User make GET-request to "https://produktapi.herokuapp.com/products"
+   # When User make GET-request to "https://fakestoreapi.com/"
+  When User make GET-request to "https://produktapi.herokuapp.com/products"
 
     Then HTTP respons status code should be 200
 
