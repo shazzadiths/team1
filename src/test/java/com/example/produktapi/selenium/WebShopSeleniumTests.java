@@ -11,8 +11,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 import java.time.Duration;
 import java.util.List;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.*;
 
 public class WebShopSeleniumTests {
     BaseClass baseClass = new BaseClass();
@@ -61,7 +60,7 @@ public class WebShopSeleniumTests {
     void verifyHomeButtonFromOtherPage() { //Shazzad
 
         verifyShopButtonNavigateToAllProductsPage();
-        WebElement home = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"index.html\"]"));
+        WebElement home = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"index.html\"]")); //tag.class[attribute=value]
         home.click();
         WebElement homeH2 = BaseClass.driver.findElement(By.cssSelector("h2.lh-1")); //tag.classname
         assertEquals("This shop is all you need", homeH2.getText());
@@ -106,6 +105,25 @@ public class WebShopSeleniumTests {
         boolean jewelryLinkText = jewelryLink.isDisplayed();
         assertTrue(jewelryLinkText, "Text is not visible");
     }
+    @Test
+    void verifyProductCategoryList(){   //Shazzad
+
+        WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
+        shop.click();
+        BaseClass.waitVisibilityOfElementByCss("a[onclick=\"renderProducts('all')");
+        List<WebElement> categoryItems = BaseClass.driver.findElements(By.className("link-body-emphasis"));
+        assertAll(
+                () -> assertEquals("All", categoryItems.get(0).getText(), "Failed, category does not match "),
+                () -> assertEquals("Men's clothing", categoryItems.get(1).getText(), "Failed, category does not match "),
+                () -> assertEquals("Women's clothing", categoryItems.get(2).getText(), "Failed, category does not match "),
+                () -> assertEquals("Jewelery", categoryItems.get(3).getText(), "Failed, category does not match "),
+                () -> assertEquals("Electronics", categoryItems.get(4).getText(), "Failed, category does not match ")
+        );
+
+    }
+
+
+
 
     @Test
     void validateCheckoutButtonUpdatedWithURL(){  //Vijaya
