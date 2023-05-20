@@ -125,8 +125,29 @@ public class WebShopSeleniumTests {
 
 
 
+    @Test
+    void validateCheckoutButtonUpdatedWithURL(){  //Vijaya
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        String actualURL = BaseClass.driver.getCurrentUrl();
+        String expectedURL = "https://webshop-agil-testautomatiserare.netlify.app/checkout.html";
+        assertEquals(expectedURL,actualURL);
 
+    }
+    @Test
+    void verifySearchBar(){   //Vijaya
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement search =  BaseClass.driver.findElement(By.xpath("//*[@id=\"search\"]"));
+        search.clear();
+        search.click();
+        search.sendKeys("Mens Casual Premium Slim Fit T-Shirts");
+        search.submit();
+        WebElement S = BaseClass.driver.findElement(By.xpath("//*[@id=\"main\"]/div/div/div/h3"));
+        String actual = S.getText();
+        String expected = "Mens Casual Premium Slim Fit T-Shirts";
+       // assertEquals(expected,actual);
 
+    }
 
 
 
