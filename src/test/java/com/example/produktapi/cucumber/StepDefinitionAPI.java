@@ -1,4 +1,4 @@
-package com.example.produktapi;
+package com.example.produktapi.cucumber;
 
 import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
