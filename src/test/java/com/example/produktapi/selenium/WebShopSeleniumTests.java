@@ -173,6 +173,7 @@ public class WebShopSeleniumTests {
         List<WebElement> countofMensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
         int actualCount = countofMensProducts.size();
         assertEquals(4,actualCount);
+
     }
 
 
