@@ -36,12 +36,12 @@ public class BaseClass {                    //Shazzad
         return options;
     }
 
-    private  static  WebDriver GetChromeDriver(){
+    public  static  WebDriver GetChromeDriver(){
         driver = new ChromeDriver(GetChromeOptions() );
         driver.manage().timeouts().pageLoadTimeout(6, TimeUnit.SECONDS);
         return driver;
     }
-    private  static  WebDriver GetEdgeDriver(){
+    public   static  WebDriver GetEdgeDriver(){
         driver = new EdgeDriver(GetEdgeOptions());
         driver.manage().timeouts().pageLoadTimeout(6, TimeUnit.SECONDS);
         return driver;
