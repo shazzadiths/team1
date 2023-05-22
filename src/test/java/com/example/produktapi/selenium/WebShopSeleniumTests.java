@@ -5,12 +5,10 @@ import org.junit.jupiter.api.BeforeAll;
 import org.junit.jupiter.api.Test;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
-import org.openqa.selenium.support.ui.ExpectedConditions;
-import org.openqa.selenium.support.ui.WebDriverWait;
 
-import java.time.Duration;
 import java.util.List;
 
+import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.*;
 
 public class WebShopSeleniumTests {
@@ -132,7 +130,6 @@ public class WebShopSeleniumTests {
         String actualURL = BaseClass.driver.getCurrentUrl();
         String expectedURL = "https://webshop-agil-testautomatiserare.netlify.app/checkout.html";
         assertEquals(expectedURL,actualURL);
-
     }
     @Test
     void verifySearchBar(){   //Vijaya
@@ -146,10 +143,38 @@ public class WebShopSeleniumTests {
         String actual = S.getText();
         String expected = "Mens Casual Premium Slim Fit T-Shirts";
        // assertEquals(expected,actual);
+    }
+    @Test    //vijaya
+    void verifyTheAddToCartButtonIsEnabled()  {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement addToCartButton = BaseClass.driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/div/button"));
+        assertTrue(addToCartButton.isEnabled());
+        assertTrue(addToCartButton.isDisplayed());
+    }
+    @Test     //vijaya
+    void verifyCheckOutButtonIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        assertTrue(checkoutButton.isEnabled());
+        assertTrue(checkoutButton.isDisplayed());
+    }
+   @Test        //vijaya
+    void verifyTheTotalProductsOfWomensClothing()  {
+        verifyShopButtonNavigateToAllProductsPage();
+        BaseClass.driver.findElement(By.linkText("Women's clothing")).click();
+        List<WebElement> countOfWomensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
+        int actualCount = countOfWomensProducts.size();
+        assertEquals(6,actualCount);
+}
+    @Test
+    void verifyTheTotalProductsOfMensClothing(){
+        verifyShopButtonNavigateToAllProductsPage();
+        BaseClass.driver.findElement(By.linkText("Men's clothing")).click();
+        List<WebElement> countofMensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
+        int actualCount = countofMensProducts.size();
+        assertEquals(4,actualCount);
 
     }
-
-
 
 
 
