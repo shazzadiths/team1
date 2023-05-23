@@ -100,5 +100,64 @@ public class StepDefinitionAPI {
         assertFalse(productList.isEmpty());
     }
 
+    @When("User make a GET-request to {string}")
+    public void user_make_a_get_request_to(String endpoint) {
+        response = RestAssured.get(endpoint);
+    }
+
+    @Then("the endpoin result should be {string}")
+    public void the_endpoin_result_should_be(String endpoint) {
+        String actualEndPoint = "/products/categories/electronics";
+        assertEquals(endpoint,actualEndPoint);
+    }
+
+    @Then("page has to upload with {int} electronic products")
+    public void page_has_to_upload_with_electronic_products(Integer count) {
+        int expectedCount = 6;
+        List<Product> productList = response.getBody().as(List.class);
+        assertEquals(expectedCount,count,"Count Does not match");
+        assertNotNull(productList);
+        assertFalse(productList.isEmpty());
+    }
+
+    @When("User make a GET-request to navigate Men's Clothing {string}")
+    public void user_make_a_get_request_to_navigate_men_s_clothing(String endpoint) {
+        response = RestAssured.get(endpoint);
+    }
+
+    @Then("the endpoint result should be {string}")
+    public void the_endpoint_result_should_be(String endpoint) {
+        String actualEndPoint = "/products/categories/men's clothing";
+        assertEquals(endpoint,actualEndPoint);
+    }
+
+    @Then("page has to upload with {int} men's clothing products")
+    public void page_has_to_upload_with_men_s_clothing_products(Integer count) {
+        int expectedCount = 4;
+        List<Product> productList = response.getBody().as(List.class);
+        assertEquals(expectedCount,count,"Count Does not match");
+        assertNotNull(productList);
+        assertFalse(productList.isEmpty());
+    }
+
+    @When("User make a GET-request to navigate women's Clothing {string}")
+    public void user_make_a_get_request_to_navigate_women_s_clothing(String endpoint) {
+        response = RestAssured.get(endpoint);
+    }
+
+    @Then("the endpoint result should be {string} for navigate women's clothing")
+    public void the_endpoint_result_should_be_for_navigate_women_s_clothing(String endpoint) {
+        String actualEndPoint = "/products/categories/women's clothing";
+        assertEquals(endpoint,actualEndPoint);
+    }
+
+    @Then("page has to upload with {int} Women's clothing products")
+    public void page_has_to_upload_with_women_s_clothing_products(Integer count) {
+        int expectedCount = 6;
+        List<Product> productList = response.getBody().as(List.class);
+        assertEquals(expectedCount,count,"Count Does not match");
+        assertNotNull(productList);
+        assertFalse(productList.isEmpty());
+    }
 
 }
