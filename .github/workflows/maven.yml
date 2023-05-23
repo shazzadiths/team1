@@ -28,4 +28,4 @@ jobs:
           distribution: 'temurin'
           cache: maven
       - name: Build with Maven and Test
-        run: mvn -B package --file unittest/pom.xml
+        run: mvn -B package --file pom.xml
