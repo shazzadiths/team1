@@ -102,9 +102,6 @@
 				<groupId>org.springframework.boot</groupId>
 				<artifactId>spring-boot-maven-plugin</artifactId>
 				<version>3.0.2</version>
-				<configuration>
-					<testClassesDirectory>src/test/java/com/example/produktapi/service</testClassesDirectory>
-				</configuration>
 			</plugin>
 		</plugins>
 	</build>
