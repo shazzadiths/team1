@@ -202,6 +202,34 @@ public class WebShopSeleniumTests {
         assertTrue(firstNameField.isDisplayed());
     }
 
+    @Test //Emma
+    void verifyWritingInFirstNameField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        firstNameField.sendKeys("Birgitta");
+        firstNameField.submit();
+        String val = firstNameField.getAttribute("value");
+        assertEquals("Birgitta", val, "Text does not match");
+        }
+
+        @Test //Emma
+        void verifyErrorMessageInFirstNameField(){
+            WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+            checkoutButton.click();
+            WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+            firstNameField.submit();
+            WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+            boolean errorMessageText = errorMessage.isDisplayed();
+            assertTrue(errorMessageText,"Error message is not visible");
+
+
+
+
+
+        }
+
 
 
 
