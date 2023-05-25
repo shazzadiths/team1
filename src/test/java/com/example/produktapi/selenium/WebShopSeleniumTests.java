@@ -132,9 +132,6 @@ public class WebShopSeleniumTests {
         );
     }
 
- 
-
-
     @Test
     void validateCheckoutButtonUpdatedWithURL() {  //Vijaya
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
