@@ -24,8 +24,9 @@ public class BaseClass {                    //Shazzad
         options.addArguments("start-maximized");
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
-        // options.addArguments("headless");
+       //  options.addArguments("headless");
         return options;
+
     }
 
     private static EdgeOptions GetEdgeOptions() {
