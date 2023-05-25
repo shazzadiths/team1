@@ -133,7 +133,6 @@ public class WebShopSeleniumTests {
         );
     }
 
-
     @Test
     void validateCheckoutButtonUpdatedWithURL() {  //Vijaya
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -192,7 +191,11 @@ public class WebShopSeleniumTests {
         List<WebElement> countofMensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
         int actualCount = countofMensProducts.size();
 
+
         assertEquals(4, actualCount);
+
+        assertEquals(4,actualCount);
+
     }
 
     @Test
@@ -317,6 +320,172 @@ public class WebShopSeleniumTests {
 
 
 
+
+
+    @Test  //Vijaya
+    void checkLastNameFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement lastNameField =  BaseClass.driver.findElement(By.cssSelector("input[id='lastName']"));
+        assertTrue(lastNameField.isEnabled());
+        assertTrue(lastNameField.isDisplayed());
+    }
+    @Test  //Vijaya
+    void verifyLastNameField(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement lastNameField =  BaseClass.driver.findElement(By.cssSelector("input[id='lastName']"));
+        lastNameField.sendKeys("Little Prince");
+        lastNameField.submit();
+        String actual = lastNameField.getAttribute("value");
+        assertEquals("Little Prince",actual,"Name does not match");
+    }
+    @Test   //Vijaya
+    void verifyLastNameFieldErrorMessage() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement lastNameField = BaseClass.driver.findElement(By.cssSelector("input[id='lastName']"));
+        lastNameField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+    }
+    @Test  //Vijaya
+    void emailIDFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement EmailField =  BaseClass.driver.findElement(By.cssSelector("input[id='email']"));
+        assertTrue(EmailField.isEnabled());
+        assertTrue(EmailField.isDisplayed());
+    }
+    @Test  //Vijaya
+    void verifyEmailIdField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement EmailField = BaseClass.driver.findElement(By.cssSelector("input[id='email']"));
+        EmailField.sendKeys("aaass@sdf.com");
+        EmailField.submit();
+        String actual= EmailField.getAttribute("value");
+        assertEquals("aaass@sdf.com",actual,"email is not matching");
+    }
+    @Test   //Vijaya
+    void verifyEmailIDFieldErrorMessage() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement emailIDField = BaseClass.driver.findElement(By.cssSelector("input[id='email']"));
+        emailIDField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+    }
+    @Test   //Vijaya
+    void verifyAddressFieldErrorMessage() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement addressField = BaseClass.driver.findElement(By.id("address"));
+        addressField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+    }
+    @Test
+    void addressFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement addressField =  BaseClass.driver.findElement(By.id("address"));
+        assertTrue(addressField.isEnabled());
+        assertTrue(addressField.isDisplayed());
+    }
+    @Test
+    void verifyAddressField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement addressField = BaseClass.driver.findElement(By.xpath("//*[@id=\"address\"]"));
+        addressField.sendKeys("Monvägen24");
+        addressField.submit();
+        String actual= addressField.getAttribute("value");
+        assertEquals("Monvägen24",actual,"email is not matching");
+    }
+    @Test
+    void countryFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement countryField =  BaseClass.driver.findElement(By.xpath("//*[@id=\"country\"]"));
+        assertTrue(countryField.isEnabled());
+        assertTrue(countryField.isDisplayed());
+    }
+    @Test
+    void verifyCountryField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement countryField = BaseClass.driver.findElement(By.xpath("//*[@id=\"country\"]"));
+        countryField.sendKeys("Sweden");
+        countryField.submit();
+       String actual =  countryField.getAttribute("value");
+       assertEquals("Sweden", actual,"country name is not same");
+    }
+    @Test   //Vijaya
+    void verifyCountryFieldErrorMessage() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement countryField = BaseClass.driver.findElement(By.id("country"));
+        countryField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+    }
+    @Test
+    void cityFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement cityField =  BaseClass.driver.findElement(By.xpath("//*[@id=\"city\"]"));
+        assertTrue(cityField.isEnabled());
+        assertTrue(cityField.isDisplayed());
+    }
+    @Test
+    void verifyCityField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement cityField = BaseClass.driver.findElement(By.id("city"));
+        cityField.sendKeys("Eskilstuna");
+        cityField.submit();
+        String actual = cityField.getAttribute("value");
+        assertEquals("Eskilstuna", actual,"City name is not same");
+    }
+    @Test
+    void zipCodeFieldIsEnabled(){
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement zipCodeField =  BaseClass.driver.findElement(By.cssSelector("input[id='zip']"));
+        assertTrue(zipCodeField.isEnabled());
+        assertTrue(zipCodeField.isDisplayed());
+    }
+    @Test
+    void verifyZipCodeField() {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement zipCodeField = BaseClass.driver.findElement(By.id("zip"));
+        zipCodeField.sendKeys("12345");
+        zipCodeField.submit();
+        String actual = zipCodeField.getAttribute("value");
+        assertEquals("12345",actual,"Zip code does not match");
+    }
 
     @AfterAll
     static void afterTest() {
