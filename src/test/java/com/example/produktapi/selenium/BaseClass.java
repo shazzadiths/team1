@@ -20,17 +20,26 @@ public class BaseClass {                    //Shazzad
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
+
         WebDriverManager.chromedriver().setup();
+
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
+
         options.addArguments("headless");
+
+       //  options.addArguments("headless");
+
         return options;
     }
 
     private static EdgeOptions GetEdgeOptions() {
+        System.setProperty("webdriver.edge.driver", "driver/msedgedriver.exe");
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
@@ -38,6 +47,7 @@ public class BaseClass {                    //Shazzad
         // options.addArguments("headless");
         return options;
     }
+
 
     public  static  WebDriver GetChromeDriver(){
         driver = new ChromeDriver(GetChromeOptions() );
@@ -51,7 +61,7 @@ public class BaseClass {                    //Shazzad
     }
     public static void NavigatePage(String url){
        GetChromeDriver().get(url);
-      // WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
+       //WebDriverWait wait = new WebDriverWait(driver, Duration.ofSeconds(10));
        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
 
     //Can use for Edge browser
