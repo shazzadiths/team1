@@ -15,7 +15,6 @@ public class WebShopSeleniumTests {
     BaseClass baseClass = new BaseClass();
 
     @BeforeAll
-
     static void beforeTest()
         {
           BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
@@ -119,10 +118,6 @@ public class WebShopSeleniumTests {
         );
 
     }
-
-
-
-
     @Test
     void validateCheckoutButtonUpdatedWithURL(){  //Vijaya
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -175,13 +170,6 @@ public class WebShopSeleniumTests {
         assertEquals(4,actualCount);
 
     }
-
-
-
-
-
-
-
 
     @AfterAll
     static void afterTest() {
