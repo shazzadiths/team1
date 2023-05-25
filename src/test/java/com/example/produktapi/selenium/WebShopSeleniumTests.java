@@ -10,6 +10,7 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 import java.util.List;
 
 import static io.restassured.RestAssured.given;
@@ -209,9 +210,11 @@ public class WebShopSeleniumTests {
     }
 
 
+
     @Test
         //Emma
     void verifyRemovingOneProductFromCart() {
+
         verifyShopButtonNavigateToAllProductsPage();
         verifyAddingOneItemToCart();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -238,6 +241,7 @@ public class WebShopSeleniumTests {
     public void verify_Main_Page_Logo() {
         assertTrue(BaseClass.driver.findElement(By.className("d-flex")).isDisplayed());
 
+
     }
 
     @Test
@@ -255,6 +259,7 @@ public class WebShopSeleniumTests {
         assertEquals("Shop", links.get(1).getText());
         assertEquals("Checkout", links.get(2).getText());
         assertEquals("About", links.get(3).getText());
+
 
     }
 
@@ -486,6 +491,74 @@ public class WebShopSeleniumTests {
         String actual = zipCodeField.getAttribute("value");
         assertEquals("12345",actual,"Zip code does not match");
     }
+
+
+    @Test //Emma
+    void verifyCreditCheckbox(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        creditCheckbox.click();
+        assertTrue(creditCheckbox.isEnabled());
+        assertTrue(creditCheckbox.isDisplayed());
+        assertTrue(creditCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyDebitCardCheckbox() throws InterruptedException {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement debitCheckbox = BaseClass.driver.findElement(By.cssSelector("input[id='debit']"));
+        Thread.sleep(5000);
+        debitCheckbox.click();
+        assertTrue(debitCheckbox.isEnabled());
+        assertTrue(debitCheckbox.isDisplayed());
+        assertTrue(debitCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyPayPalCheckbox() throws InterruptedException {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement paypalCheckbox = BaseClass.driver.findElement(By.id("paypal"));
+        Thread.sleep(5000);
+        paypalCheckbox.click();
+        assertTrue(paypalCheckbox.isEnabled());
+        assertTrue(paypalCheckbox.isDisplayed());
+        assertTrue(paypalCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyWritingInNameOfCardField() {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.sendKeys("Name");
+        nameOfCardField.submit();
+        String val = nameOfCardField.getAttribute("value");
+        assertEquals("Name", val, "Text does not match");
+    }
+
+    @Test //Emma
+    void checkNameOnCardFieldIsEnabled(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        assertTrue(nameOfCardField.isEnabled());
+        assertTrue(nameOfCardField.isDisplayed());
+    }
+
+    @Test //Emma
+    void verifyErrorMessageInNameOfCardField(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.cssSelector("div[class='invalid-feedback']"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+    }
+
 
     @AfterAll
     static void afterTest() {
