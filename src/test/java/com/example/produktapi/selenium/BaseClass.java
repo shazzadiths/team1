@@ -26,7 +26,6 @@ public class BaseClass {                    //Shazzad
         // options.addArguments("--incognito");
        //  options.addArguments("headless");
         return options;
-
     }
 
     private static EdgeOptions GetEdgeOptions() {
