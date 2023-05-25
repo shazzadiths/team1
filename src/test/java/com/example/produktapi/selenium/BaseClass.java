@@ -18,6 +18,7 @@ public class BaseClass {                    //Shazzad
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
@@ -35,6 +36,7 @@ public class BaseClass {                    //Shazzad
         // options.addArguments("headless");
         return options;
     }
+
 
     public  static  WebDriver GetChromeDriver(){
         driver = new ChromeDriver(GetChromeOptions() );

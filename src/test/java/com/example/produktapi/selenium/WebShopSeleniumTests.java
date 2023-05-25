@@ -11,7 +11,6 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
 
-import java.time.Duration;
 import java.util.List;
 
 import static java.lang.Thread.sleep;
@@ -134,9 +133,6 @@ public class WebShopSeleniumTests {
         );
     }
 
- 
-
-
     @Test
     void validateCheckoutButtonUpdatedWithURL() {  //Vijaya
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -206,7 +202,6 @@ public class WebShopSeleniumTests {
         assertEquals("1", oneProductInCart.getText());
     }
 
-
     @Test //Emma
     void verifyRemovingOneProductFromCart (){
         verifyShopButtonNavigateToAllProductsPage();
@@ -232,8 +227,6 @@ public class WebShopSeleniumTests {
     @Test
     public void verify_Main_Page_Logo() {
         assertTrue(BaseClass.driver.findElement(By.className("d-flex")).isDisplayed());
-
-
     }
 
     @Test //Emma
@@ -430,6 +423,7 @@ public class WebShopSeleniumTests {
         assertEquals("12345",actual,"Zip code does not match");
     }
 
+
     @Test //Emma
     void verifyCreditCheckbox(){
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -495,7 +489,6 @@ public class WebShopSeleniumTests {
         boolean errorMessageText = errorMessage.isDisplayed();
         assertTrue(errorMessageText,"Error message is not visible");
     }
-
 
     @AfterAll
     static void afterTest() {
