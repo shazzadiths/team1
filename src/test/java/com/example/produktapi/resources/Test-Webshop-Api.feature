@@ -1,7 +1,7 @@
 Feature: Test Webshop API
 #Emma
   Scenario: Webshop API should respond with status code 200 on get request
-    When User make GET-request to "https://webshop-agil-testautomatiserare.netlify.app/"
+    When User make GET-request to "https://produktapi.herokuapp.com/products"
     Then HTTP response status code should be 200
 #Somayeh
   Scenario:Test get URL endpoint for products
