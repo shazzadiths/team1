@@ -16,6 +16,7 @@ import io.restassured.response.Response;
 import io.restassured.specification.RequestSpecification;
 import org.junit.Before;
 import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.Test;
 import org.objectweb.asm.TypeReference;
 import org.springframework.boot.test.web.server.LocalServerPort;
 import org.springframework.http.HttpStatus;
@@ -42,10 +43,10 @@ public class StepDefinitionAPI {
     private static String description;
     private static String image;
 
-  /*  @BeforeEach
+    @BeforeEach
     public void before(){
         baseURI = "https://produktapi.herokuapp.com";
-    }*/
+    }
 
 //Emma Dahl
 
@@ -67,20 +68,11 @@ public class StepDefinitionAPI {
 //somayeh
 
 
-
-
     @When("user makes a GET request to {string}")
     public void userDoAGetRequestTo(String url) {
         baseURI = url;
         response = RestAssured.given().get();
     }
-
-    /*@Then("the endpoint should be {string} ")
-    public void theEndpointIsAndUserShouldSeeAListOfAllProducts(String endpoint) {
-        String actualEndpoint = response.getBody().jsonPath().getString("/products");
-        //String actualEndpoint = response.jsonPath().getString("endpoint");
-        assertEquals(endpoint, actualEndpoint, "correct endpoint");
-    }*/
 
     @And("user should see a list of all products with size={int}")
     public void userShouldSeeAListOfAllProducts(int productsCount) {
@@ -88,8 +80,6 @@ public class StepDefinitionAPI {
         assertNotNull(products);
         assertEquals(productsCount, products.size());
     }
-
-
 
     @And("the response should contain {int} categories")
     public void the_Response_Should_Contain_All_Categories(int expectedCategoryCount) {
@@ -140,6 +130,8 @@ public class StepDefinitionAPI {
         });
     }
 
+
+    //Vijaya
     @When("User make a GET-request to {string}")
     public void user_make_a_get_request_to(String endpoint) {
         response = RestAssured.get(endpoint);

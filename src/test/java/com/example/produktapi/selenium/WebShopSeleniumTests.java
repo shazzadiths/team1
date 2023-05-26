@@ -10,8 +10,10 @@ import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
 import java.time.Duration;
+
 import java.util.List;
 
+import static io.restassured.RestAssured.given;
 import static java.lang.Thread.sleep;
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -192,11 +194,17 @@ public class WebShopSeleniumTests {
         BaseClass.driver.findElement(By.linkText("Men's clothing")).click();
         List<WebElement> countofMensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
         int actualCount = countofMensProducts.size();
+
+
+        assertEquals(4, actualCount);
+
         assertEquals(4,actualCount);
+
     }
 
-    @Test //Emma
-    void verifyAddingOneItemToCart(){
+    @Test
+        //Emma
+    void verifyAddingOneItemToCart() {
         verifyShopButtonNavigateToAllProductsPage();
         WebElement addToCart = BaseClass.driver.findElement(By.className("btn-primary"));
         addToCart.click();
@@ -206,8 +214,9 @@ public class WebShopSeleniumTests {
 
 
 
-    @Test //Emma
-    void verifyRemovingOneProductFromCart (){
+    @Test
+        //Emma
+    void verifyRemovingOneProductFromCart() {
         verifyShopButtonNavigateToAllProductsPage();
         verifyAddingOneItemToCart();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -218,8 +227,9 @@ public class WebShopSeleniumTests {
         assertEquals("0", yourCart.getText());
     }
 
-    @Test //Emma
-    void checkFirstNameFieldIsEnabled(){
+    @Test
+        //Emma
+    void checkFirstNameFieldIsEnabled() {
         verifyShopButtonNavigateToAllProductsPage();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         checkoutButton.click();
@@ -227,7 +237,8 @@ public class WebShopSeleniumTests {
         assertTrue(firstNameField.isEnabled());
         assertTrue(firstNameField.isDisplayed());
     }
-//Somayeh
+
+    //Somayeh
     @Test
     public void verify_Main_Page_Logo() {
         assertTrue(BaseClass.driver.findElement(By.className("d-flex")).isDisplayed());
@@ -235,7 +246,60 @@ public class WebShopSeleniumTests {
 
     }
 
-    @Test //Emma
+    @Test
+    public void shopText() {
+        String text = BaseClass.driver.findElement(By.className("d-flex")).findElement(By.tagName("h1")).getText();
+        assertEquals("\uD83D\uDECD️ The Shop", text.trim());
+    }
+
+
+    @Test
+    public void verify_If_Home_Shop_Checkout_About_Is_Visible_And_Has_Correct_Text() throws InterruptedException {
+        Thread.sleep(2000);
+        List<WebElement> links = BaseClass.driver.findElements(By.cssSelector(".justify-content-end li"));
+        assertEquals("Home", links.get(0).getText());
+        assertEquals("Shop", links.get(1).getText());
+        assertEquals("Checkout", links.get(2).getText());
+        assertEquals("About", links.get(3).getText());
+
+
+    }
+
+    @Test
+    public void get_Home_Link_Text() {
+
+        WebElement homeLink = BaseClass.driver.findElement(By.partialLinkText("Home"));
+        assertTrue(homeLink.isDisplayed());
+        WebElement linkText = homeLink.findElement(By.xpath("//a[contains(text(),'Home')]"));
+
+
+        assertEquals("Home", linkText.getText());
+        assertTrue(linkText.isDisplayed());
+
+    }
+
+    @Test
+    public void test_Get_Title_Text_For_First_Product_In_Jewelery() throws InterruptedException {
+        Thread.sleep(2000);
+
+        WebElement shopLink = BaseClass.driver.findElement(By.cssSelector(".text-white"));
+        shopLink.click();
+        //Thread.sleep(2000);
+        BaseClass.driver.get("https://webshop-agil-testautomatiserare.netlify.app/products.html");
+        BaseClass.driver.findElement(By.linkText("Jewelery")).click();
+
+        WebElement firstTitle = BaseClass.driver.findElement(By.cssSelector(".card-title"));
+       firstTitle.isDisplayed();
+
+        assertEquals("John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", firstTitle.getText());
+
+
+    }
+
+
+
+    @Test
+        //Emma
     void verifyWritingInFirstNameField() {
         verifyShopButtonNavigateToAllProductsPage();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -245,24 +309,25 @@ public class WebShopSeleniumTests {
         firstNameField.submit();
         String val = firstNameField.getAttribute("value");
         assertEquals("Birgitta", val, "Text does not match");
-        }
-
-        @Test //Emma
-        void verifyErrorMessageInFirstNameField(){
-            WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
-            checkoutButton.click();
-            WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
-            firstNameField.submit();
-            WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
-            boolean errorMessageText = errorMessage.isDisplayed();
-            assertTrue(errorMessageText,"Error message is not visible");
-        }
-
-    @Test //Somayeh
-    public void shopText(){
-        String text = BaseClass.driver.findElement(By.className("d-flex")).findElement(By.tagName("h1")).getText();
-        assertEquals("\uD83D\uDECD️ The Shop",text.trim());
     }
+
+    @Test
+        //Emma
+    void verifyErrorMessageInFirstNameField() {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        firstNameField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText, "Error message is not visible");
+    }
+
+
+
+
+
+
 
     @Test  //Vijaya
     void checkLastNameFieldIsEnabled(){
@@ -427,6 +492,72 @@ public class WebShopSeleniumTests {
         zipCodeField.submit();
         String actual = zipCodeField.getAttribute("value");
         assertEquals("12345",actual,"Zip code does not match");
+    }
+
+    @Test //Emma
+    void verifyCreditCheckbox(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        creditCheckbox.click();
+        assertTrue(creditCheckbox.isEnabled());
+        assertTrue(creditCheckbox.isDisplayed());
+        assertTrue(creditCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyDebitCardCheckbox() throws InterruptedException {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement debitCheckbox = BaseClass.driver.findElement(By.cssSelector("input[id='debit']"));
+        Thread.sleep(5000);
+        debitCheckbox.click();
+        assertTrue(debitCheckbox.isEnabled());
+        assertTrue(debitCheckbox.isDisplayed());
+        assertTrue(debitCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyPayPalCheckbox() throws InterruptedException {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement paypalCheckbox = BaseClass.driver.findElement(By.id("paypal"));
+        Thread.sleep(5000);
+        paypalCheckbox.click();
+        assertTrue(paypalCheckbox.isEnabled());
+        assertTrue(paypalCheckbox.isDisplayed());
+        assertTrue(paypalCheckbox.isSelected());
+    }
+
+    @Test //Emma
+    void verifyWritingInNameOfCardField() {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.sendKeys("Name");
+        nameOfCardField.submit();
+        String val = nameOfCardField.getAttribute("value");
+        assertEquals("Name", val, "Text does not match");
+    }
+
+    @Test //Emma
+    void checkNameOnCardFieldIsEnabled(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        assertTrue(nameOfCardField.isEnabled());
+        assertTrue(nameOfCardField.isDisplayed());
+    }
+
+    @Test //Emma
+    void verifyErrorMessageInNameOfCardField(){
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.submit();
+        WebElement errorMessage = BaseClass.driver.findElement(By.cssSelector("div[class='invalid-feedback']"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
     }
 
     @AfterAll
