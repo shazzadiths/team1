@@ -245,7 +245,7 @@ public class WebShopSeleniumTests {
     }
 
     @Test
-    public void shopText() {
+    public void get_Shop_Text() {
         String text = BaseClass.driver.findElement(By.className("d-flex")).findElement(By.tagName("h1")).getText();
         assertEquals("\uD83D\uDECD️ The Shop", text.trim());
     }
