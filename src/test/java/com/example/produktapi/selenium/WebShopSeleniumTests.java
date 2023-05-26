@@ -22,10 +22,13 @@ public class WebShopSeleniumTests {
 
     @BeforeAll
 
-    static void beforeTest() {
+    static void beforeTest()
+        {
+          BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
+        }
 
-        BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
-    }
+
+    
 
     @Test
     public void verifyWebShopTitle() {  //Shazzad
@@ -214,7 +217,6 @@ public class WebShopSeleniumTests {
     @Test
         //Emma
     void verifyRemovingOneProductFromCart() {
-
         verifyShopButtonNavigateToAllProductsPage();
         verifyAddingOneItemToCart();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -492,7 +494,6 @@ public class WebShopSeleniumTests {
         assertEquals("12345",actual,"Zip code does not match");
     }
 
-
     @Test //Emma
     void verifyCreditCheckbox(){
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -558,7 +559,6 @@ public class WebShopSeleniumTests {
         boolean errorMessageText = errorMessage.isDisplayed();
         assertTrue(errorMessageText,"Error message is not visible");
     }
-
 
     @AfterAll
     static void afterTest() {

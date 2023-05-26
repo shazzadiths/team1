@@ -1,17 +1,19 @@
 package com.example.produktapi.selenium;
-import org.openqa.selenium.*;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.nio.file.WatchEvent;
+
 import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+
 
 public class BaseClass {                    //Shazzad
 
@@ -24,7 +26,11 @@ public class BaseClass {                    //Shazzad
         options.addArguments("start-maximized");
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
+
+        options.addArguments("headless");
+
        //  options.addArguments("headless");
+
         return options;
     }
 
