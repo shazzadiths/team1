@@ -88,18 +88,17 @@ public class WebShopSeleniumTests {
     void verifyButtonMensClothing() { //Emma
 
         verifyShopButtonNavigateToAllProductsPage();
-        WebElement mensClothingButton = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(2) > a"));
-        mensClothingButton.click();
-        WebElement all = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('all')"));
-        String pagetext = all.getText();
-        assertEquals("All", pagetext);
+        WebElement mensClothingButton = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('men')"));
+        String mensLinkText = mensClothingButton.getText();
+        assertEquals("Men's clothing",mensLinkText, "Text does not match");
+
     }
 
     @Test
     void checkWomanClothingLinkText() { //Emma
 
         verifyShopButtonNavigateToAllProductsPage();
-        WebElement womanClothes = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(3) > a"));
+        WebElement womanClothes = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('women')"));
         String womanLinkText = womanClothes.getText();
         assertEquals("Women's clothing", womanLinkText, "Text does not match");
     }
@@ -194,12 +193,7 @@ public class WebShopSeleniumTests {
         BaseClass.driver.findElement(By.linkText("Men's clothing")).click();
         List<WebElement> countofMensProducts = BaseClass.driver.findElements(By.cssSelector("div.col"));
         int actualCount = countofMensProducts.size();
-
-
-        assertEquals(4, actualCount);
-
         assertEquals(4,actualCount);
-
     }
 
     @Test
