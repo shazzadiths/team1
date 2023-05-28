@@ -1,30 +1,36 @@
 package com.example.produktapi.selenium;
-import org.openqa.selenium.*;
+
+import io.github.bonigarcia.wdm.WebDriverManager;
+import org.openqa.selenium.By;
+import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
-;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
-import java.nio.file.WatchEvent;
+
 import java.time.Duration;
-import java.time.Instant;
-import java.util.List;
 import java.util.concurrent.TimeUnit;
+
+
 
 public class BaseClass {                    //Shazzad
 
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
-        System.setProperty("webdriver.chrome.driver", "C:/Driver/chromedriver.exe");
+        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
+
+        //options.addArguments("headless");
+
        //  options.addArguments("headless");
+
         return options;
     }
 
@@ -62,6 +68,7 @@ public class BaseClass {                    //Shazzad
         WebDriverWait wait1 = new WebDriverWait(BaseClass.driver, Duration.ofSeconds(15));
         wait1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(url)));
     }
+
 
 
 }
