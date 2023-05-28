@@ -1,13 +1,19 @@
 package com.example.produktapi.cucumber;
 
 import com.example.produktapi.selenium.BaseClass;
+import com.fasterxml.jackson.databind.ser.Serializers;
+import io.cucumber.java.en.And;
 import io.cucumber.java.en.Given;
 import io.cucumber.java.en.Then;
 import io.cucumber.java.en.When;
 import org.junit.After;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebElement;
+
 import io.cucumber.java.Scenario;
+
+import org.openqa.selenium.support.ui.WebDriverWait;
+
 
 import java.util.List;
 
@@ -36,6 +42,7 @@ public class StepDefinitionWebShop {  //Shazzad
         assertEquals( "\uD83D\uDECD️ The Shop", h1 );
         BaseClass.driver.quit();
     }
+
     @When("User visits products page")
     public void user_visits_products_page() {
         WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
@@ -106,3 +113,225 @@ public class StepDefinitionWebShop {  //Shazzad
         BaseClass.driver.quit();
     }
 }
+
+    //Emma
+    @When("User navigates to all products page by shop button")
+    public void user_navigates_to_all_products_page_by_shop_button() {
+        WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
+        shop.click();
+    //Emma
+    }
+    @Then("Number of categories should be {int}")
+    public void number_of_categories_should_be(Integer int1) {
+        List<WebElement> categoryItems = BaseClass.driver.findElements(By.className("link-body-emphasis"));
+        assertEquals(5, categoryItems.size(), "The number of categories does not match");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Category link text should be {string}")
+    public void category_link_text_should_be(String expectedText) {
+        WebElement mensClothingButton = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('men')"));
+        String mensLinkText = mensClothingButton.getText();
+        assertEquals(expectedText,mensLinkText, "Text does not match");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Link text should be {string}")
+    public void link_text_should_be(String expectedText) {
+        WebElement womanClothes = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('women')"));
+        String womanLinkText = womanClothes.getText();
+        assertEquals(expectedText, womanLinkText, "Text does not match");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User clicks on check out button")
+    public void user_clicks_on_check_out_button() {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+    }
+    //Emma
+    @Then("Page would show text {string}")
+    public void page_would_show_text(String expectedText) {
+        WebElement validateText = BaseClass.driver.findElement(By.cssSelector("body > main > div.py-5.text-center > h2"));
+        assertEquals(expectedText, validateText.getText());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Jewelry link text should be displayed")
+    public void jewelry_link_text_should_be_displayed() {
+        WebElement jewelryLink = BaseClass.driver.findElement(By.cssSelector("body > div.container.mt-5 > div > ul > li:nth-child(4) > a"));
+        boolean jewelryLinkText = jewelryLink.isDisplayed();
+        assertTrue(jewelryLinkText, "Text is not visible");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User adds one item to cart")
+    public void user_adds_one_item_to_cart() {
+        WebElement addToCart = BaseClass.driver.findElement(By.className("btn-primary"));
+        addToCart.click();
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+    }
+    //Emma
+    @Then("Product in cart should be {int}")
+    public void product_in_cart_should_be(Integer int1) {
+        WebElement oneProductInCart = BaseClass.driver.findElement(By.xpath("//*[@id=\"buttonSize\"]"));
+        assertEquals("1", oneProductInCart.getText());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @And("User removes item")
+    public void user_removes_item() {
+        WebElement removeOneProduct = BaseClass.driver.findElement(By.cssSelector("button[onclick='removeItem(1)']"));
+        removeOneProduct.click();
+    }
+    //Emma
+    @Then("Item in cart should be {int}")
+    public void item_in_cart_should_be(Integer int1) {
+        WebElement yourCart = BaseClass.driver.findElement(By.id("cartSize"));
+        assertEquals("0", yourCart.getText());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User navigates to check out form by clicking on check out button")
+    public void user_navigates_to_check_out_form_by_clicking_on_check_out_button() {
+        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        checkoutButton.click();
+    }
+    //Emma
+    @Then("First name field should be enabled")
+    public void first_name_field_should_be_enabled() {
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        assertTrue(firstNameField.isEnabled());
+    }
+    //Emma
+    @Then("First name field should be displayed")
+    public void first_name_field_should_be_displayed() {
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        assertTrue(firstNameField.isDisplayed());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User writes name in first name field")
+    public void user_writes_name_in_first_name_field() {
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        firstNameField.sendKeys("Birgitta");
+        firstNameField.submit();
+    }
+    //Emma
+    @Then("Text should be {string}")
+    public void text_should_be(String expectedName) {
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        String val = firstNameField.getAttribute("value");
+        assertEquals(expectedName, val, "Text does not match");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User does not enter a name")
+    public void user_does_not_enter_a_name() {
+        WebElement firstNameField = BaseClass.driver.findElement(By.cssSelector("input[id='firstName']"));
+        firstNameField.submit();
+    }
+    //Emma
+    @Then("Error message should be displayed")
+    public void error_message_should_be_displayed() {
+        WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText, "Error message is not visible");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Credit check box should be enabled")
+    public void credit_check_box_should_be_enabled() {
+        WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        creditCheckbox.click();
+        assertTrue(creditCheckbox.isEnabled());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Credit check box should be displayed")
+    public void credit_check_box_should_be_displayed() {
+        WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        creditCheckbox.click();
+        assertTrue(creditCheckbox.isDisplayed());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Credit check box should be selected")
+    public void credit_check_box_should_be_selected() {
+        WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        creditCheckbox.click();
+        assertTrue(creditCheckbox.isSelected());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Debit check box should be displayed")
+    public void debit_check_box_should_be_displayed() {
+        WebElement debitCheckbox = BaseClass.driver.findElement(By.cssSelector("input[id='debit']"));
+        assertTrue(debitCheckbox.isDisplayed());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Paypal check box should be displayed")
+    public void paypal_check_box_should_be_displayed() {
+        WebElement paypalCheckbox = BaseClass.driver.findElement(By.id("paypal"));
+        assertTrue(paypalCheckbox.isDisplayed());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User writes name in name of card field")
+    public void user_writes_name_in_name_of_card_field() {
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.sendKeys("Name");
+        nameOfCardField.submit();
+    }
+    //Emma
+    @Then("The text should be {string}")
+    public void the_text_should_be(String expectedName) {
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        String val = nameOfCardField.getAttribute("value");
+        assertEquals(expectedName, val, "Text does not match");
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Name of card field should be enabled")
+    public void name_of_card_field_should_be_enabled() {
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        assertTrue(nameOfCardField.isEnabled());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @Then("Name of card field should be displayed")
+    public void name_of_card_field_should_be_displayed() {
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        assertTrue(nameOfCardField.isDisplayed());
+        BaseClass.driver.quit();
+    }
+    //Emma
+    @When("User does not write anything in name of card field")
+    public void user_does_not_write_anything_in_name_of_card_field() {
+        WebElement nameOfCardField = BaseClass.driver.findElement(By.id("cc-name"));
+        nameOfCardField.submit();
+    }
+    //Emma
+    @Then("Error message should be visible")
+    public void error_message_should_be_visible() {
+        WebElement errorMessage = BaseClass.driver.findElement(By.cssSelector("div[class='invalid-feedback']"));
+        boolean errorMessageText = errorMessage.isDisplayed();
+        assertTrue(errorMessageText,"Error message is not visible");
+        BaseClass.driver.quit();
+    }
+
+
+    }
+
+
+
+
+
+
+
+
+
+
+
