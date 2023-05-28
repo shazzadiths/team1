@@ -105,5 +105,4 @@ public class StepDefinitionWebShop {  //Shazzad
         assertTrue(EmailField.isDisplayed());
         BaseClass.driver.quit();
     }
-
 }
