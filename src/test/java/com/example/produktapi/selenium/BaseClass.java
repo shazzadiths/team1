@@ -27,7 +27,7 @@ public class BaseClass {                    //Shazzad
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
 
-        //options.addArguments("headless");
+        options.addArguments("headless");
 
        //  options.addArguments("headless");
 
