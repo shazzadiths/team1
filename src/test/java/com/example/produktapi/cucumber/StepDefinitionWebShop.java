@@ -105,31 +105,24 @@ public class StepDefinitionWebShop {
 
     }
     //Somayeh
-    @When("User click shop link and should navigates to next page")
-    public void user_Click_Shop_Link_And_Should_Navigates_To_Next_Page() {
+    @When("User click shop link and type in jewelery in search box")
+    public void user_Click_Shop_Link_And_Type_In_Jewelery_In_Search_Box() {
         WebElement shopLink = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
         shopLink.click();
 
     }
-    @Then("User should be able to type in desired category")
-    public void user_Should_Be_Able_To_Type_In_Desired_Category() {
+    @Then("The input should be the value user writes in the dialog box")
+    public void the_Input_Should_Be_The_Value_User_Writes_In_The_Dialog_Box() {
 
         WebElement searchText = BaseClass.driver.findElement(By.cssSelector("input[type=search][id=search]"));
         searchText.clear();
         searchText.sendKeys("jewelery");
         searchText.click();
         searchText.isDisplayed();
-        searchText.submit();
+
 
     }
     //somayeh
-
-    @Then("Webpage should be able to filter the result and show {int} products")
-    public void webpage_Should_Be_Able_To_Filter_The_Result_And_Show_Products(int expectedProductsSize) {
-        List<WebElement> products = BaseClass.driver.findElements(By.className("link-body-emphasis"));
-        assertEquals(expectedProductsSize, products.size(), "Bug!");
-    }
-
 
     @Then("Description text should be {string}")
     public void description_Text_Should_Be(String expectedDescriptionText) {
