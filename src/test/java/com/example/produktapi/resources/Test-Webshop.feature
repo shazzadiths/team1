@@ -10,7 +10,7 @@ Feature: Test-Webshop
 
 
 
-    #Somayeh
+
     #Somayeh
   Scenario:Verify that logo in main page is visible
     Given User visits webpage with chrome driver

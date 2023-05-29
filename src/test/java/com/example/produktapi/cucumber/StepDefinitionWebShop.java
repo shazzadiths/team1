@@ -104,6 +104,7 @@ public class StepDefinitionWebShop {
 
 
     }
+    //Somayeh
     @When("User click shop link and should navigates to next page")
     public void user_Click_Shop_Link_And_Should_Navigates_To_Next_Page() {
         WebElement shopLink = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
@@ -121,6 +122,7 @@ public class StepDefinitionWebShop {
         searchText.submit();
 
     }
+    //somayeh
 
     @Then("Webpage should be able to filter the result and show {int} products")
     public void webpage_Should_Be_Able_To_Filter_The_Result_And_Show_Products(int expectedProductsSize) {
