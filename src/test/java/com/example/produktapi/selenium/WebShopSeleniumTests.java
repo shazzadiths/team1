@@ -283,13 +283,41 @@ public class WebShopSeleniumTests {
         BaseClass.driver.findElement(By.linkText("Jewelery")).click();
 
         WebElement firstTitle = BaseClass.driver.findElement(By.cssSelector(".card-title"));
-       firstTitle.isDisplayed();
+        firstTitle.isDisplayed();
 
         assertEquals("John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", firstTitle.getText());
+    }
 
+    @Test
+    public void test_Get_Text_This_Shop_Is_All_You_Need_In_Main_Page() throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement text = BaseClass.driver.findElement(By.cssSelector("h2.display-4"));
+        text.isDisplayed();
+        assertEquals("This shop is all you need", text.getText());
 
     }
 
+    @Test
+    public void verify_If_Shop_Link_Works_Correct()  {
+        verifyShopButtonNavigateToAllProductsPage();
+        String expectedCategorySearch = "jewelery";
+        WebElement searchText = BaseClass.driver.findElement(By.cssSelector("input[type=search][id=search]"));
+        searchText.clear();
+        searchText.sendKeys("jewelery");
+        searchText.isDisplayed();
+        assertEquals(expectedCategorySearch, searchText.getAttribute("value"));
+
+    }
+
+    @Test
+    public void get_Description_For_Last_Product_In_Electronics() throws InterruptedException {
+        verifyShopButtonNavigateToAllProductsPage();
+        WebElement electronicLink = BaseClass.driver.findElement(By.cssSelector("a[onclick=renderProducts('electronics')"));
+        Thread.sleep(1000);
+        electronicLink.click();
+        List<WebElement> elements = BaseClass.driver.findElements(By.cssSelector("main[id=main] div"));
+        assertEquals("En lite böjd skär Men den funkar ändå!", elements.get(elements.size() - 1).findElement(By.cssSelector("p.card-text")).getText());
+    }
 
 
     @Test
@@ -316,12 +344,6 @@ public class WebShopSeleniumTests {
         boolean errorMessageText = errorMessage.isDisplayed();
         assertTrue(errorMessageText, "Error message is not visible");
     }
-
-
-
-
-
-
 
     @Test  //Vijaya
     void checkLastNameFieldIsEnabled(){

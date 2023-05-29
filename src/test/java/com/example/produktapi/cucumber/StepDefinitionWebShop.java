@@ -129,16 +129,17 @@ public class StepDefinitionWebShop {
         assertTrue(EmailField.isDisplayed());
         BaseClass.driver.quit(); 
     }
-    
+
+
     //Somayeh
 
     @Then("user should see logo")
-    public void userShouldSeeLogo() {
+    public void user_Should_See_Logo() {
         assertTrue(BaseClass.driver.findElement(By.className("d-flex")).isDisplayed());
     }
 
     @Then("Webpage title should be {string}")
-    public void webpageTitleShouldBe(String expectedTitle) {
+    public void webpage_Title_Should_Be(String expectedTitle) {
         String text = BaseClass.driver.findElement(By.className("d-flex")).findElement(By.tagName("h1")).getText();
         assertEquals(expectedTitle, text.trim());
     }
@@ -147,7 +148,7 @@ public class StepDefinitionWebShop {
     public void user_Should_See_The_Four_Links(String expectedLinksText) throws InterruptedException {
         Thread.sleep(2000);
         List<WebElement> links = BaseClass.driver.findElements(By.cssSelector(".justify-content-end li"));
-        assertEquals(expectedLinksText,links.get(0).getText()+","+links.get(1).getText()+","+links.get(2).getText()+","+links.get(3).getText());
+        assertEquals(expectedLinksText, links.get(0).getText() + "," + links.get(1).getText() + "," + links.get(2).getText() + "," + links.get(3).getText());
 
     }
 
@@ -177,6 +178,47 @@ public class StepDefinitionWebShop {
         assertEquals(expectedTitle, firstTitle.getText());
     }
 
+    @Then("{string} should be shown and visible")
+    public void should_Be_Shown_And_Visible(String expectedText) throws InterruptedException {
+        Thread.sleep(2000);
+        WebElement text = BaseClass.driver.findElement(By.cssSelector("h2.display-4"));
+
+        text.isDisplayed();
+        assertEquals(expectedText, text.getText());
+
+
+    }
+
+    @When("User click shop link and type in jewelery in search box")
+    public void user_Click_Shop_Link_And_Type_In_Jewelery_In_Search_Box() {
+        WebElement shopLink = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
+        shopLink.click();
+
+    }
+
+    @Then("The input should be the value user writes in the dialog box")
+    public void The_Input_Should_Be_The_Value_User_Writes_In_The_Dialog_Box() {
+        String expectedCategorySearch = "jewelery";
+        WebElement searchText = BaseClass.driver.findElement(By.cssSelector("input[type=search][id=search]"));
+        searchText.clear();
+        searchText.sendKeys("jewelery");
+        searchText.click();
+        searchText.isDisplayed();
+
+        assertEquals(expectedCategorySearch,searchText.getAttribute("value"));
+    }
+
+
+
+
+    @Then("Description text should be {string}")
+    public void description_Text_Should_Be(String expectedDescriptionText) {
+        BaseClass.driver.get("https://webshop-agil-testautomatiserare.netlify.app/products.html");
+        BaseClass.driver.findElement(By.linkText("Electronics")).click();
+        List<WebElement> elements = BaseClass.driver.findElements(By.cssSelector("main[id=main] div"));
+        assertEquals(expectedDescriptionText, elements.get(elements.size() - 1).findElement(By.cssSelector("p.card-text")).getText());
+
+    }
 
     //Emma
     @When("User navigates to all products page by shop button")
