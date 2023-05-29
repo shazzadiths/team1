@@ -101,7 +101,7 @@ public class StepDefinitionWebShop {
 
         assertEquals(expectedTitle, firstTitle.getText());
     }
-}
+
 
     //Emma
     @When("User navigates to all products page by shop button")
