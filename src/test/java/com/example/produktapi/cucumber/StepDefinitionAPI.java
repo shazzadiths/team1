@@ -97,7 +97,7 @@ public class StepDefinitionAPI {
 
 
     @And("it should contains the following attributes:")
-    public void it_Should_Contain_The_Following_Attributes(io.cucumber.datatable.DataTable dataTable) {
+    public void it_Should_Contain_The_Following_Attributes(DataTable dataTable) {
 
         dataTable.asMap(String.class, String.class).forEach((attribute, expectedValue) -> {
             switch (attribute.toLowerCase()) {
