@@ -127,9 +127,9 @@ public class StepDefinitionWebShop {
         WebElement EmailField =  BaseClass.driver.findElement(By.cssSelector("input[id='email']"));
         assertTrue(EmailField.isEnabled());
         assertTrue(EmailField.isDisplayed());
-        BaseClass.driver.quit();
-
-
+        BaseClass.driver.quit(); 
+    }
+    
     //Somayeh
 
     @Then("user should see logo")
