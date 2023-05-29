@@ -11,6 +11,7 @@ Feature: Test-Webshop
 
 
     #Somayeh
+    #Somayeh
   Scenario:Verify that logo in main page is visible
     Given User visits webpage with chrome driver
     Then user should see logo
@@ -27,9 +28,23 @@ Feature: Test-Webshop
     Given User visits webpage with chrome driver
     Then User should see the link "Home" with correct text
 
-    Scenario: Check the first title in category Jewelery
-      Given User visits webpage with chrome driver
-      Then User should see the last product in jewelery with visible title "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"
+  Scenario: Check the first title in category Jewelery
+    Given User visits webpage with chrome driver
+    Then User should see the last product in jewelery with visible title "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"
+
+  Scenario: ThisShopIsAllYouNeed should be correct and visible
+    Given User visits webpage with chrome driver
+    Then "This shop is all you need" should be shown and visible
+
+  Scenario: check if Shop link is clickable and works as expected
+    Given User visits webpage with chrome driver
+    When User click shop link and type in jewelery in search box
+    Then The input should be the value user writes in the dialog box
+
+
+  Scenario: check if last description for last link is clickable and works as expected
+    Given User visits webpage with chrome driver
+    Then Description text should be "En lite böjd skär Men den funkar ändå!"
 
   #Emma
   Scenario: Categories in shop should be 5
