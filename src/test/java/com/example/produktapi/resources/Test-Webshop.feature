@@ -8,7 +8,31 @@ Feature: Test-Webshop
     Given User visits webpage with chrome driver
     Then  Heading should be "🛍️ The Shop"
 
-
+#Vijaya
+  Scenario: Verify the Add to cart button
+    Given User visits webpage with chrome driver
+    When User visits products page
+    And user look for the add to cart button
+    Then The add to cart button should be enabled and displayed
+  Scenario: Verify the Add to cart button
+    Given User visits webpage with chrome driver
+    When User visits products page
+    And user look for the Checkout button
+    Then The Checkout button should be enabled and displayed
+ Scenario: Verify the total count of Women's clothing products
+   Given User visits webpage with chrome driver
+   When User visits products page
+   When User clicks on Women's clothing link
+   Then User can verify the total count of women's clothing products are 6
+ Scenario: Verify the error message for the last name fiels
+   Given User visits webpage with chrome driver
+   When User clicks on checkout button
+   And User sumit the last name field without entering any value
+   Then User can see error message indicating the missing last name
+ Scenario: Verify the email id field is enabled and displayed
+   Given User visits webpage with chrome driver
+   When User clicks on checkout button
+   Then User should see the email id Field enabled and display
 
     #Somayeh
   Scenario:Verify that logo in main page is visible
@@ -30,6 +54,7 @@ Feature: Test-Webshop
     Scenario: Check the first title in category Jewelery
       Given User visits webpage with chrome driver
       Then User should see the last product in jewelery with visible title "John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet"
+
 
   #Emma
   Scenario: Categories in shop should be 5
@@ -134,6 +159,7 @@ Feature: Test-Webshop
      When User navigates to check out form by clicking on check out button
      When User does not write anything in name of card field
      Then Error message should be visible
+
 
 
 

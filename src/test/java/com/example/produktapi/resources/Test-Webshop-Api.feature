@@ -31,19 +31,19 @@ Feature: Test Webshop API
 
 #Vijaya
   Scenario: Test get URL endpoint for all the electronics products by category
-      When User make a GET-request to "http://localhost:8080/products/categories/electronics"
+      When User make a GET-request to "https://produktapi.herokuapp.com/products/categories/electronics"
       Then the endpoin result should be "/products/categories/electronics"
       And page has to upload with 6 electronic products
 
 
   Scenario: Test get URL endpoint for all the men's clothing products by category
-    When User make a GET-request to navigate Men's Clothing "http://localhost:8080/products/categories/men's clothing"
+    When User make a GET-request to navigate Men's Clothing "https://produktapi.herokuapp.com/products/categories/men's clothing"
     Then the endpoint result should be "/products/categories/men's clothing"
     And page has to upload with 4 men's clothing products
 
 
   Scenario: Test get URL endpoint for all the women's clothing products by category
-    When User make a GET-request to navigate women's Clothing "http://localhost:8080/products/categories/women's clothing"
+    When User make a GET-request to navigate women's Clothing "https://produktapi.herokuapp.com/products/categories/women's clothing"
     Then the endpoint result should be "/products/categories/women's clothing" for navigate women's clothing
     And page has to upload with 6 Women's clothing products
 
