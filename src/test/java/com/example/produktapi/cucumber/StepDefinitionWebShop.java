@@ -112,7 +112,7 @@ public class StepDefinitionWebShop {  //Shazzad
         assertTrue(EmailField.isDisplayed());
         BaseClass.driver.quit();
     }
-}
+
 
     //Emma
     @When("User navigates to all products page by shop button")
