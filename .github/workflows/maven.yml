@@ -33,7 +33,7 @@ jobs:
       - name: Install Google Chrome
         uses: logikal-io/install-chrome@v1
         with:
-          version: 113
+          version: current
 
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
