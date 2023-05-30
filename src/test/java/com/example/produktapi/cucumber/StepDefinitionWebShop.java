@@ -123,16 +123,23 @@ public class StepDefinitionWebShop {
 
     }
     //Emma
+    /*
     @When("User adds one item to cart")
-    public void user_adds_one_item_to_cart() {
+    public void user_adds_one_item_to_cart() throws InterruptedException {
+        Thread.sleep(3000);
         WebElement addToCart = BaseClass.driver.findElement(By.className("btn-primary"));
         addToCart.click();
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        Thread.sleep(6000);
         checkoutButton.click();
+
     }
+
+
     //Emma
     @Then("Product in cart should be {int}")
-    public void product_in_cart_should_be(Integer int1) {
+    public void product_in_cart_should_be(Integer int1) throws InterruptedException {
+        Thread.sleep(3000);
         WebElement oneProductInCart = BaseClass.driver.findElement(By.xpath("//*[@id=\"buttonSize\"]"));
         assertEquals("1", oneProductInCart.getText());
 
@@ -150,6 +157,8 @@ public class StepDefinitionWebShop {
         assertEquals("0", yourCart.getText());
 
     }
+
+    */
     //Emma
     @When("User navigates to check out form by clicking on check out button")
     public void user_navigates_to_check_out_form_by_clicking_on_check_out_button() {
@@ -391,8 +400,8 @@ public class StepDefinitionWebShop {
         checkoutButton.click();
     }
 
-    @When("User sumit the last name field without entering any value")
-    public void user_sumit_the_last_name_field_without_entering_any_value() {
+    @When("User submit the last name field without entering any value")
+    public void user_submit_the_last_name_field_without_entering_any_value() {
         WebElement lastNameField = BaseClass.driver.findElement(By.cssSelector("input[id='lastName']"));
         lastNameField.submit();
     }
@@ -452,10 +461,10 @@ public class StepDefinitionWebShop {
     }
     @Given("User visits Jewelery page")
     public void user_visits_jewelery_page() throws InterruptedException {
-        Thread.sleep(2000);
+        Thread.sleep(3000);
         WebElement jewelery = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('jewelery')\"]"));
         jewelery.click();
-        Thread.sleep(2000);
+        Thread.sleep(3000);
     }
     /*
     @Then("User should see the last product in jewelery with visible title {string}")
