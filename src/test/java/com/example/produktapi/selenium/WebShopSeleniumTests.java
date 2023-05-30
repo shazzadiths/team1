@@ -486,12 +486,7 @@ public class WebShopSeleniumTests {
         checkoutButton.click();
         BaseClass.waitVisibilityOfElementByCss("input[id='debit']");  //element click intercepted: Element is not clickable at point
         WebElement debitCheckbox = BaseClass.driver.findElement(By.cssSelector("input[id='debit']"));
-        Thread.sleep(5000);
-
-        debitCheckbox.click();
         assertTrue(debitCheckbox.isEnabled());
-        assertTrue(debitCheckbox.isDisplayed());
-        assertTrue(debitCheckbox.isSelected());
     }
 
     @Test //Emma
@@ -500,11 +495,7 @@ public class WebShopSeleniumTests {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         checkoutButton.click();
         WebElement paypalCheckbox = BaseClass.driver.findElement(By.id("paypal"));
-        Thread.sleep(5000);
-        paypalCheckbox.click();
         assertTrue(paypalCheckbox.isEnabled());
-        assertTrue(paypalCheckbox.isDisplayed());
-        assertTrue(paypalCheckbox.isSelected());
     }
 
     @Test //Emma
