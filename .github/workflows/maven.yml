@@ -27,5 +27,8 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
           cache: maven
-      - name: Maven Test
+      - name: Maven Unit Test
         run: mvn test -Dtest=ProductServiceTest,ProductUnitTest
+
+      - name: Maven Selenium Test
+        run: mvn test -Dtest=WebShopSeleniumTests
