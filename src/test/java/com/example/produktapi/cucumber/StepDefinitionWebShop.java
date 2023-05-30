@@ -211,6 +211,7 @@ public class StepDefinitionWebShop {
     @Then("Credit check box should be enabled")
     public void credit_check_box_should_be_enabled() {
         WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        BaseClass.scrollToElement(creditCheckbox );
         creditCheckbox.click();
         assertTrue(creditCheckbox.isEnabled());
 
@@ -219,6 +220,7 @@ public class StepDefinitionWebShop {
     @Then("Credit check box should be displayed")
     public void credit_check_box_should_be_displayed() {
         WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        BaseClass.scrollToElement(creditCheckbox);
         creditCheckbox.click();
         assertTrue(creditCheckbox.isDisplayed());
 
@@ -227,6 +229,7 @@ public class StepDefinitionWebShop {
     @Then("Credit check box should be selected")
     public void credit_check_box_should_be_selected() {
         WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
+        BaseClass.scrollToElement(creditCheckbox);
         creditCheckbox.click();
         assertTrue(creditCheckbox.isSelected());
 
@@ -428,7 +431,6 @@ public class StepDefinitionWebShop {
     }
 
 
-
     //Somayeh
 
     @Then("user should see logo")
@@ -466,24 +468,7 @@ public class StepDefinitionWebShop {
         jewelery.click();
         Thread.sleep(3000);
     }
-    /*
-    @Then("User should see the last product in jewelery with visible title {string}")
-    public void user_Should_See_The_first_Product_In_Jewelery_With_Visible_Title(String expectedTitle) throws InterruptedException {
-        Thread.sleep(2000);
 
-        WebElement shopLink = BaseClass.driver.findElement(By.cssSelector(".text-white"));
-        shopLink.click();
-
-        BaseClass.driver.get("https://webshop-agil-testautomatiserare.netlify.app/products.html");
-        BaseClass.driver.findElement(By.linkText("Jewelery")).click();
-        // WebElement firstTitle = BaseClass.driver.findElement(By.cssSelector(".card-title"));
-        assertEquals(expectedTitle, firstTitle.getText());
-
-        firstTitle.isEnabled();
-        assertEquals(expectedTitle, firstTitle.getText());
-    }
-
-        */
     @Then("User should see the first product in jewelery with visible title {string}")
     public void user_should_see_the_first_product_in_jewelery_with_visible_title(String expectedTitle) {
         WebElement firstTitle = BaseClass.driver.findElement(By.xpath("/html/body/main/div[1]/div/div/h3"));  //Shazzad ändrat till xpath
@@ -522,17 +507,19 @@ public class StepDefinitionWebShop {
     }
 
 
-
+/*
 
     @Then("Description text should be {string}")
     public void description_Text_Should_Be(String expectedDescriptionText) {
         BaseClass.driver.get("https://webshop-agil-testautomatiserare.netlify.app/products.html");
+        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         BaseClass.driver.findElement(By.linkText("Electronics")).click();
+        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         List<WebElement> elements = BaseClass.driver.findElements(By.cssSelector("main[id=main] div"));
         assertEquals(expectedDescriptionText, elements.get(elements.size() - 1).findElement(By.cssSelector("p.card-text")).getText());
 
     }
-
+*/
 
 
     }

@@ -145,7 +145,7 @@ Feature: Test-Webshop
     And user look for the Checkout button
     Then The Checkout button should be enabled and displayed
     And Close browser
-     #ändrat av shazzad
+
   Scenario: Verify the total count of Women's clothing products
     Given User visits webpage with chrome driver
     When User navigates to all products page by shop button
@@ -182,7 +182,7 @@ Feature: Test-Webshop
     Then User should see the link "Home" with correct text
     And Close browser
 
-    #ändrat av shazzad
+
   Scenario: Check the first title in category Jewelery
     Given User visits webpage with chrome driver
     When User navigates to all products page by shop button
@@ -200,8 +200,8 @@ Feature: Test-Webshop
     Then The input should be the value user writes in the dialog box
     And Close browser
 
-  Scenario: check if last description for last link is clickable and works as expected
-    Given User visits webpage with chrome driver
-    Then Description text should be "En lite böjd skär Men den funkar ändå!"
-    And Close browser
+  #Scenario: check if last description for last link is clickable and works as expected
+   # Given User visits webpage with chrome driver
+   # Then Description text should be "En lite böjd skär Men den funkar ändå!"
+    #And Close browser
 

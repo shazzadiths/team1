@@ -3,10 +3,12 @@ package com.example.produktapi.selenium;
 import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
+import org.openqa.selenium.WebElement;
 import org.openqa.selenium.chrome.ChromeDriver;
 import org.openqa.selenium.chrome.ChromeOptions;
 import org.openqa.selenium.edge.EdgeDriver;
 import org.openqa.selenium.edge.EdgeOptions;
+import org.openqa.selenium.interactions.Actions;
 import org.openqa.selenium.support.ui.ExpectedConditions;
 import org.openqa.selenium.support.ui.WebDriverWait;
 
@@ -20,6 +22,7 @@ public class BaseClass {                    //Shazzad
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
+       // System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
         WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
@@ -77,5 +80,14 @@ public class BaseClass {                    //Shazzad
     }
     public static void waitPageLoad(){
         driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
+
+    public static void  scrollToElement(WebElement element){
+
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(6));
+        int deltaY = element.getRect().y;
+        new Actions(driver)
+                .scrollByAmount(0, deltaY)
+                .perform();
     }
 }
