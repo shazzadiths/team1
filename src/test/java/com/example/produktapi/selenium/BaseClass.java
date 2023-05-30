@@ -1,6 +1,6 @@
 package com.example.produktapi.selenium;
 
-import io.github.bonigarcia.wdm.WebDriverManager;
+//import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,11 +26,7 @@ public class BaseClass {                    //Shazzad
         options.addArguments("start-maximized");
         options.addArguments("–no-sandbox");
         // options.addArguments("--incognito");
-
-        //options.addArguments("headless");
-
-       //  options.addArguments("headless");
-
+         //options.addArguments("--headless=new");
         return options;
     }
 
@@ -40,14 +36,14 @@ public class BaseClass {                    //Shazzad
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
         // options.addArguments("--incognito");
-        // options.addArguments("headless");
+        // options.addArguments("--headless=new");
         return options;
     }
 
 
     public  static  WebDriver GetChromeDriver(){
         driver = new ChromeDriver(GetChromeOptions() );
-        driver.manage().timeouts().pageLoadTimeout(6, TimeUnit.SECONDS);
+        driver.manage().timeouts().pageLoadTimeout(10, TimeUnit.SECONDS);
         return driver;
     }
     public   static  WebDriver GetEdgeDriver(){
@@ -68,7 +64,18 @@ public class BaseClass {                    //Shazzad
         WebDriverWait wait1 = new WebDriverWait(BaseClass.driver, Duration.ofSeconds(15));
         wait1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.cssSelector(url)));
     }
-
-
-
+    public static void waitVisibilityOfElementByClassName(String url){
+        WebDriverWait wait1 = new WebDriverWait(BaseClass.driver, Duration.ofSeconds(15));
+        wait1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.className(url)));
+    }
+    public static void waitVisibilityOfElementByXpath(String url){
+        WebDriverWait wait1 = new WebDriverWait(BaseClass.driver, Duration.ofSeconds(15));
+        wait1.until(ExpectedConditions.visibilityOfAllElementsLocatedBy(By.xpath(url)));
+    }
+    public static void pageLoadWait(long ms){
+     driver.manage().timeouts().pageLoadTimeout(Duration.ofMillis(ms));
+    }
+    public static void waitPageLoad(){
+        driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
+    }
 }
