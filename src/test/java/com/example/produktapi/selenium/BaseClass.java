@@ -25,6 +25,7 @@ public class BaseClass {                    //Shazzad
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
+        options.addArguments("--remote-allow-origins=*");
         driver = new ChromeDriver(options);
         driver.navigate().to("https://www.google.com");
         driver.manage().window().maximize();
