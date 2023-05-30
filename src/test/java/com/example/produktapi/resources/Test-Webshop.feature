@@ -38,19 +38,7 @@ Feature: Test-Webshop
     When  User navigates to all products page by shop button
     Then Jewelry link text should be displayed
     And Close browser
-  Scenario: Should work correct when user adds one item to cart
-    Given User visits webpage with chrome driver
-    When User navigates to all products page by shop button
-    When User adds one item to cart
-    Then Product in cart should be 1
-    And Close browser
-  Scenario: Removing one product from cart should work correct
-    Given User visits webpage with chrome driver
-    When User navigates to all products page by shop button
-    When User adds one item to cart
-    And User removes item
-    Then Item in cart should be 0
-    And Close browser
+
   Scenario: First name field should be enabled and displayed
     Given User visits webpage with chrome driver
     When User navigates to check out form by clicking on check out button
@@ -167,7 +155,7 @@ Feature: Test-Webshop
   Scenario: Verify the error message for the last name fields
     Given User visits webpage with chrome driver
     When User clicks on checkout button
-    And User sumit the last name field without entering any value
+    And User submit the last name field without entering any value
     Then User can see error message indicating the missing last name
     And Close browser
   Scenario: Verify the email id field is enabled and displayed

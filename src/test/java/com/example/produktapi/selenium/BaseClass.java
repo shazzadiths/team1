@@ -24,7 +24,7 @@ public class BaseClass {                    //Shazzad
         ChromeOptions options = new ChromeOptions();
         options.addArguments("--no-sandbox");
         options.addArguments("--disable-dev-shm-usage");
-        options.addArguments("--headless");
+        options.addArguments("--headless=new");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
         return options;

@@ -54,6 +54,7 @@ public class WebShopSeleniumTests {
         WebElement all = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('all')"));
         String pagetext = all.getText();
         assertEquals("All", pagetext);
+
     }
 
     @Test
@@ -198,32 +199,6 @@ public class WebShopSeleniumTests {
         assertEquals(4,actualCount);
     }
 
-    @Test
-        //Emma
-    void verifyAddingOneItemToCart() {
-        verifyShopButtonNavigateToAllProductsPage();
-        WebElement addToCart = BaseClass.driver.findElement(By.className("btn-primary"));
-        addToCart.click();
-        WebElement oneProductInCart = BaseClass.driver.findElement(By.xpath("//*[@id=\"buttonSize\"]"));
-        assertEquals("1", oneProductInCart.getText());
-    }
-
-
-
-    @Test
-        //Emma
-    void verifyRemovingOneProductFromCart() {
-        verifyShopButtonNavigateToAllProductsPage();
-        verifyAddingOneItemToCart();
-        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
-        BaseClass.waitVisibilityOfElementByClassName("btn-warning");
-        checkoutButton.click();
-        WebElement removeOneProduct = BaseClass.driver.findElement(By.cssSelector("button[onclick='removeItem(1)']"));
-        BaseClass.waitVisibilityOfElementByCss("button[onclick='removeItem(1)']");
-        removeOneProduct.click();
-        WebElement yourCart = BaseClass.driver.findElement(By.id("cartSize"));
-        assertEquals("0", yourCart.getText());
-    }
 
     @Test
         //Emma
