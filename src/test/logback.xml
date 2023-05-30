@@ -1,5 +1,5 @@
 <configuration debug="false">
     ...
-    <logger name="org.apache.hc.client5.http" level="debug"/>
+    <logger name="org.apache.hc.client5.http" level="error"/>
     ...
 </configuration>
