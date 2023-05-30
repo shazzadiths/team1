@@ -31,9 +31,8 @@ jobs:
         run: mvn test -Dtest=ProductServiceTest,ProductUnitTest
 
       - name: Install Google Chrome
-        uses: logikal-io/install-chrome@v1
-        with:
-          version: current
+        uses: browser-actions/setup-chrome@v1
+        run: chrome --version
 
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
