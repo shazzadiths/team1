@@ -27,5 +27,11 @@ jobs:
           java-version: '19'
           distribution: 'temurin'
           cache: maven
-      - name: Maven Test
+      - name: Maven Unit Test
         run: mvn test -Dtest=ProductServiceTest,ProductUnitTest
+
+      - name: Install Google Chrome
+        uses: browser-actions/setup-chrome@v1
+
+      - name: Maven Selenium Test
+        run: mvn test -Dtest=WebShopSeleniumTests

@@ -1,6 +1,6 @@
 package com.example.produktapi.selenium;
 
-//import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -20,13 +20,13 @@ public class BaseClass {                    //Shazzad
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
-        options.addArguments("–no-sandbox");
-        // options.addArguments("--incognito");
-         //options.addArguments("--headless=new");
         return options;
     }
 
