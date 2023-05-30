@@ -34,4 +34,4 @@ jobs:
         uses: browser-actions/setup-chrome@v1
 
       - name: Maven Selenium Test
-        run: mvn test -Dtest=WebShopSeleniumTests
+        run: mvn test -e -Dtest=WebShopSeleniumTests
