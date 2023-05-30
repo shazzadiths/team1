@@ -1,6 +1,6 @@
 package com.example.produktapi.selenium;
 
-//import io.github.bonigarcia.wdm.WebDriverManager;
+import io.github.bonigarcia.wdm.WebDriverManager;
 import org.openqa.selenium.By;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.chrome.ChromeDriver;
@@ -26,6 +26,7 @@ public class BaseClass {                    //Shazzad
         options.addArguments("--disable-dev-shm-usage");
         options.addArguments("--headless");
         options.addArguments("--remote-allow-origins=*");
+        options.addArguments("start-maximized");
         return options;
     }
 
