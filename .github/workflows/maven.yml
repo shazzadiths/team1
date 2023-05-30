@@ -31,9 +31,9 @@ jobs:
         run: mvn test -Dtest=ProductServiceTest,ProductUnitTest
 
       - name: Install Google Chrome
-        run: |
-          chmod +x ./scripts/InstallChrome.sh
-                      ./scripts/InstallChrome.sh 
+        uses: logikal-io/install-chrome@v1
+        with:
+          version: 113
 
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
