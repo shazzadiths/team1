@@ -32,7 +32,6 @@ jobs:
 
       - name: Install Google Chrome
         uses: browser-actions/setup-chrome@v1
-        run: chrome --version
 
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
