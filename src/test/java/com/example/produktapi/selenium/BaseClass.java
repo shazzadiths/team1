@@ -20,16 +20,15 @@ public class BaseClass {                    //Shazzad
     public static WebDriver driver;
 
     private static ChromeOptions GetChromeOptions() {
-        System.setProperty("webdriver.chrome.driver", "driver/chromedriver.exe");
+        WebDriverManager.chromedriver().setup();
         ChromeOptions options = new ChromeOptions();
-        options.addArguments("--remote-allow-origins=*");
-        options.addArguments("start-maximized");
-        options.addArguments("–no-sandbox");
-        // options.addArguments("--incognito");
-
-        //options.addArguments("headless");
-
-       //  options.addArguments("headless");
+        options.addArguments("--no-sandbox");
+        options.addArguments("--disable-dev-shm-usage");
+        options.addArguments("--headless");
+        driver = new ChromeDriver(options);
+        driver.navigate().to("https://www.google.com");
+        driver.manage().window().maximize();
+        driver.manage().timeouts().implicitlyWait(120, TimeUnit.MILLISECONDS);
 
         return options;
     }

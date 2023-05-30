@@ -30,5 +30,10 @@ jobs:
       - name: Maven Unit Test
         run: mvn test -Dtest=ProductServiceTest,ProductUnitTest
 
+      - name: Install Google Chrome
+        run: |
+          chmod +x ./scripts/InstallChrome.sh
+                      ./scripts/InstallChrome.sh 
+
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
