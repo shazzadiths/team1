@@ -61,7 +61,7 @@ public class WebShopSeleniumTests {
     void verifyAllProductsList() throws InterruptedException {  //Shazzad
 
         WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));  //tag.class[attribute=value]
-        shop.click();
+        BaseClass.javaScriptClick(shop);
         Thread.sleep(5000);
         BaseClass.waitVisibilityOfElementByCss("a[onclick=\"renderProducts('all')\"]");   //tagName[attribute=‘attribute_Value’]
         List<WebElement> allproductsList = BaseClass.driver.findElements(By.cssSelector("div.col"));  //tag.classname
@@ -474,7 +474,7 @@ public class WebShopSeleniumTests {
         checkoutButton.click();
         BaseClass.pageLoadWait(5000);
         WebElement creditCheckbox = BaseClass.driver.findElement(By.id("credit"));
-        creditCheckbox.click();
+        BaseClass.javaScriptClick(creditCheckbox);
         assertTrue(creditCheckbox.isEnabled());
         assertTrue(creditCheckbox.isDisplayed());
         assertTrue(creditCheckbox.isSelected());
@@ -487,8 +487,7 @@ public class WebShopSeleniumTests {
         BaseClass.waitVisibilityOfElementByCss("input[id='debit']");  //element click intercepted: Element is not clickable at point
         WebElement debitCheckbox = BaseClass.driver.findElement(By.cssSelector("input[id='debit']"));
         Thread.sleep(5000);
-
-        debitCheckbox.click();
+        BaseClass.javaScriptClick(debitCheckbox);
         assertTrue(debitCheckbox.isEnabled());
         assertTrue(debitCheckbox.isDisplayed());
         assertTrue(debitCheckbox.isSelected());
@@ -501,7 +500,7 @@ public class WebShopSeleniumTests {
         checkoutButton.click();
         WebElement paypalCheckbox = BaseClass.driver.findElement(By.id("paypal"));
         Thread.sleep(5000);
-        paypalCheckbox.click();
+        BaseClass.javaScriptClick(paypalCheckbox);
         assertTrue(paypalCheckbox.isEnabled());
         assertTrue(paypalCheckbox.isDisplayed());
         assertTrue(paypalCheckbox.isSelected());
