@@ -135,13 +135,13 @@ Feature: Test-Webshop
 #Vijaya
   Scenario: Verify the Add to cart button
     Given User visits webpage with chrome driver
-    When User visits products page
-    And user look for the add to cart button
-    Then The add to cart button should be enabled and displayed
+    When User navigates to all products page by shop button
+   # And user look for the add to cart button
+    Then user look for the add to cart button button should be enabled and displayed
     And Close browser
-  Scenario: Verify the Add to cart button
+  Scenario: Verify the Add to Checkout button
     Given User visits webpage with chrome driver
-    When User visits products page
+    When User navigates to all products page by shop button
     And user look for the Checkout button
     Then The Checkout button should be enabled and displayed
     And Close browser

@@ -76,9 +76,9 @@ public class StepDefinitionWebShop {
         WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
         shop.click();
         Thread.sleep(5000);
-        //Emma
-    }
 
+    }
+    //Emma
     @Then("Number of categories should be {int}")
     public void number_of_categories_should_be(Integer int1) {
         List<WebElement> categoryItems = BaseClass.driver.findElements(By.className("link-body-emphasis"));
@@ -344,26 +344,18 @@ public class StepDefinitionWebShop {
 
 //Vijaya
 
-    @When("User visits products page")
-    public void user_visits_products_page() {
-        WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));
-        shop.click();
-    }
-    @When("user look for the add to cart button")
-    public void user_look_for_the_add_to_cart_button() {
-        WebElement addToCartButton = BaseClass.driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/div/button"));
-    }
 
-    @Then("The add to cart button should be enabled and displayed")
-    public void the_add_to_cart_button_should_be_enabled_and_displayed() {
+    @Then("user look for the add to cart button button should be enabled and displayed")
+    public void user_look_for_the_add_to_cart_button_button_should_be_enabled_and_displayed() {
         WebElement addToCartButton = BaseClass.driver.findElement(By.xpath("//*[@id=\"main\"]/div[5]/div/div/button"));
+        BaseClass.scrollToElement(addToCartButton);
         assertTrue(addToCartButton.isEnabled());
         assertTrue(addToCartButton.isDisplayed());
-
     }
     @When("user look for the Checkout button")
     public void user_look_for_the_checkout_button() {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
+        assertTrue(checkoutButton.isDisplayed());
     }
 
     @Then("The Checkout button should be enabled and displayed")
