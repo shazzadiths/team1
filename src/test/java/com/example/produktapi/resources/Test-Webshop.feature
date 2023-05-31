@@ -135,17 +135,17 @@ Feature: Test-Webshop
 #Vijaya
   Scenario: Verify the Add to cart button
     Given User visits webpage with chrome driver
-    When User visits products page
-    And user look for the add to cart button
-    Then The add to cart button should be enabled and displayed
+    When User navigates to all products page by shop button
+   # And user look for the add to cart button
+    Then user look for the add to cart button button should be enabled and displayed
     And Close browser
-  Scenario: Verify the Add to cart button
+  Scenario: Verify the Add to Checkout button
     Given User visits webpage with chrome driver
-    When User visits products page
+    When User navigates to all products page by shop button
     And user look for the Checkout button
     Then The Checkout button should be enabled and displayed
     And Close browser
-     #ändrat av shazzad
+
   Scenario: Verify the total count of Women's clothing products
     Given User visits webpage with chrome driver
     When User navigates to all products page by shop button
@@ -182,7 +182,7 @@ Feature: Test-Webshop
     Then User should see the link "Home" with correct text
     And Close browser
 
-    #ändrat av shazzad
+
   Scenario: Check the first title in category Jewelery
     Given User visits webpage with chrome driver
     When User navigates to all products page by shop button
@@ -200,8 +200,8 @@ Feature: Test-Webshop
     Then The input should be the value user writes in the dialog box
     And Close browser
 
-  Scenario: check if last description for last link is clickable and works as expected
-    Given User visits webpage with chrome driver
-    Then Description text should be "En lite böjd skär Men den funkar ändå!"
-    And Close browser
+  #Scenario: check if last description for last link is clickable and works as expected
+   # Given User visits webpage with chrome driver
+   # Then Description text should be "En lite böjd skär Men den funkar ändå!"
+    #And Close browser
 
