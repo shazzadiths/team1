@@ -145,9 +145,8 @@ public class StepDefinitionAPI {
 
     @Then("page has to upload with {int} electronic products")
     public void page_has_to_upload_with_electronic_products(Integer count) {
-        int expectedCount = 6;
         int actualCount = response.getBody().jsonPath().getList("products").size();
-        assertEquals(expectedCount,actualCount,"Count Does not match");
+        assertEquals(count,actualCount,"Count Does not match");
     }
 
     @When("User make a GET-request to navigate Men's Clothing {string}")
@@ -163,9 +162,8 @@ public class StepDefinitionAPI {
 
     @Then("page has to upload with {int} men's clothing products")
     public void page_has_to_upload_with_men_s_clothing_products(Integer count) {
-        int expectedCount = 4;
         int actualCount = response.getBody().jsonPath().getList("products").size();
-        assertEquals(expectedCount,actualCount,"Count Does not match");
+        assertEquals(count,actualCount,"Count Does not match");
     }
 
     @When("User make a GET-request to navigate women's Clothing {string}")
@@ -181,9 +179,8 @@ public class StepDefinitionAPI {
 
     @Then("page has to upload with {int} Women's clothing products")
     public void page_has_to_upload_with_women_s_clothing_products(Integer count) {
-        int expectedCount = 6;
         int actualCount = response.getBody().jsonPath().getList("products").size();
-        assertEquals(expectedCount,actualCount,"Count Does not match");
+        assertEquals(count,actualCount,"Count Does not match");
     }
 
 
