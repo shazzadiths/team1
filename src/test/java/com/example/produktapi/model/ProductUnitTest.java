@@ -20,9 +20,9 @@ public class ProductUnitTest {
     product.setTitle("Powerboots Original Stövlar");
     String newtitle = product.getTitle();
     Assertions.assertEquals( newtitle,"Powerboots Original Stövlar");
-// Test commit
+
     }
-    
+
     @Test
     void CheckProductDescription() {
         product.setDescription("Automatiserad testning och testverktyg");
@@ -32,9 +32,9 @@ public class ProductUnitTest {
     @Test
     //EmmaDahl 
     void CheckGetCategory(){
-    product.setCategory("Jewelery");
+    product.setCategory("Girl's Jewelery");
     String getCategory = product.getCategory();
-    Assertions.assertEquals(getCategory, "Jewelery");
+    Assertions.assertEquals(getCategory, "Girl's Jewelery");
     }
 
     @Test

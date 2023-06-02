@@ -498,12 +498,10 @@ public class StepDefinitionWebShop {
         assertEquals(expectedCategorySearch,searchText.getAttribute("value"));
     }
 
-
 /*
-
     @Then("Description text should be {string}")
     public void description_Text_Should_Be(String expectedDescriptionText) {
-        BaseClass.driver.get("https://webshop-agil-testautomatiserare.netlify.app/products.html");
+
         BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
         BaseClass.driver.findElement(By.linkText("Electronics")).click();
         BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
@@ -511,7 +509,9 @@ public class StepDefinitionWebShop {
         assertEquals(expectedDescriptionText, elements.get(elements.size() - 1).findElement(By.cssSelector("p.card-text")).getText());
 
     }
-*/
+
+ */
+
 
 
     }

@@ -70,7 +70,7 @@ public class WebShopSeleniumTests {
     void verifyAllProductsList() throws InterruptedException {  //Shazzad
 
         WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href='products.html']"));  //"a.text-white[href=\"products.html\"]"
-       Thread.sleep(5000);
+        Thread.sleep(5000);
         BaseClass.javaScriptClick(shop);
         Thread.sleep(5000);
         BaseClass.waitVisibilityOfElementByCss("a[onclick=\"renderProducts('all')\"]");   //tagName[attribute=‘attribute_Value’]
@@ -231,14 +231,14 @@ public class WebShopSeleniumTests {
     public void verify_Main_Page_Logo() {
         assertTrue(BaseClass.driver.findElement(By.className("d-flex")).isDisplayed());
     }
-
+    //Somayeh
     @Test
     public void get_Shop_Text() {
         String text = BaseClass.driver.findElement(By.className("d-flex")).findElement(By.tagName("h1")).getText();
         assertEquals("\uD83D\uDECD️ The Shop", text.trim());
     }
 
-
+    //Somayeh
     @Test
     public void verify_If_Home_Shop_Checkout_About_Is_Visible_And_Has_Correct_Text() throws InterruptedException {
         Thread.sleep(2000);
@@ -248,7 +248,7 @@ public class WebShopSeleniumTests {
         assertEquals("Checkout", links.get(2).getText());
         assertEquals("About", links.get(3).getText());
     }
-
+    //Somayeh
     @Test
     public void get_Home_Link_Text() {
         WebElement homeLink = BaseClass.driver.findElement(By.partialLinkText("Home"));
@@ -257,7 +257,7 @@ public class WebShopSeleniumTests {
         assertEquals("Home", linkText.getText());
         assertTrue(linkText.isDisplayed());
     }
-
+    //Somayeh
     @Test
     public void test_Get_Title_Text_For_First_Product_In_Jewelery() throws InterruptedException {
         WebElement shop = BaseClass.driver.findElement(By.cssSelector("a.text-white[href=\"products.html\"]"));  //tag.class[attribute=value]
@@ -266,7 +266,7 @@ public class WebShopSeleniumTests {
         WebElement jewelery = BaseClass.driver.findElement(By.cssSelector("a[onclick=\"renderProducts('jewelery')\"]"));
         BaseClass.javaScriptClick(jewelery);
         Thread.sleep(2000);
-        WebElement firstTitle = BaseClass.driver.findElement(By.xpath("/html/body/main/div[1]/div/div/h3"));  //Shazzad ändrat till xpath
+        WebElement firstTitle = BaseClass.driver.findElement(By.xpath("/html/body/main/div[1]/div/div/h3"));
         firstTitle.isEnabled();
         assertEquals("John Hardy Women's Legends Naga Gold & Silver Dragon Station Chain Bracelet", firstTitle.getText());
     }
@@ -318,7 +318,8 @@ public class WebShopSeleniumTests {
     void verifyLastNameFieldErrorMessage() {
 
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
-        checkoutButton.click();
+        BaseClass.javaScriptClick(checkoutButton);
+      //  checkoutButton.click();
         WebElement lastNameField = BaseClass.driver.findElement(By.cssSelector("input[id='lastName']"));
         lastNameField.submit();
         WebElement errorMessage = BaseClass.driver.findElement(By.className("invalid-feedback"));
@@ -367,7 +368,7 @@ public class WebShopSeleniumTests {
         boolean errorMessageText = errorMessage.isDisplayed();
         assertTrue(errorMessageText,"Error message is not visible");
     }
-    @Test
+    @Test //Vijaya
     void addressFieldIsEnabled(){
 
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -376,7 +377,7 @@ public class WebShopSeleniumTests {
         assertTrue(addressField.isEnabled());
         assertTrue(addressField.isDisplayed());
     }
-    @Test
+    @Test //Vijaya
     void verifyAddressField() {
 
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
@@ -387,16 +388,16 @@ public class WebShopSeleniumTests {
         String actual= addressField.getAttribute("value");
         assertEquals("Monvägen24",actual,"email is not matching");
     }
-    @Test
+    @Test //Vijaya
     void countryFieldIsEnabled(){
-       // verifyShopButtonNavigateToAllProductsPage();
+
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         checkoutButton.click();
         WebElement countryField =  BaseClass.driver.findElement(By.xpath("//*[@id=\"country\"]"));
         assertTrue(countryField.isEnabled());
         assertTrue(countryField.isDisplayed());
     }
-    @Test
+    @Test //Vijaya
     void verifyCountryField()  {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         BaseClass.waitVisibilityOfElementByClassName("btn-warning");
@@ -417,7 +418,7 @@ public class WebShopSeleniumTests {
         boolean errorMessageText = errorMessage.isDisplayed();
         assertTrue(errorMessageText,"Error message is not visible");
     }
-    @Test
+    @Test //Vijaya
     void cityFieldIsEnabled(){
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         checkoutButton.click();
@@ -425,7 +426,7 @@ public class WebShopSeleniumTests {
         assertTrue(cityField.isEnabled());
         assertTrue(cityField.isDisplayed());
     }
-    @Test
+    @Test //Vijaya
     void verifyCityField() {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         BaseClass.waitVisibilityOfElementByClassName("btn-warning");
@@ -438,7 +439,7 @@ public class WebShopSeleniumTests {
         assertEquals("Eskilstuna", actual,"City name is not same");
     }
 
-    @Test
+    @Test //Vijaya
     void zipCodeFieldIsEnabled(){
 
         WebElement checkoutButton = BaseClass.driver.findElement(By.cssSelector("a.btn-warning"));
@@ -453,7 +454,7 @@ public class WebShopSeleniumTests {
     }
 
 
-    @Test
+    @Test //Vijaya
     void verifyZipCodeField() {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         BaseClass.waitVisibilityOfElementByClassName("btn-warning");

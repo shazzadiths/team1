@@ -200,8 +200,9 @@ Feature: Test-Webshop
     Then The input should be the value user writes in the dialog box
     And Close browser
 
-  #Scenario: check if last description for last link is clickable and works as expected
-   # Given User visits webpage with chrome driver
-   # Then Description text should be "En lite böjd skär Men den funkar ändå!"
-    #And Close browser
+#Scenario: check if last description for last link is clickable and works as expected
+ # Given User visits webpage with chrome driver
+  #When User navigates to all products page by shop button
+ #Then Description text should be "En lite böjd skär Men den funkar ändå!"
+  #And Close browser
 
