@@ -38,8 +38,8 @@ public class BaseClass {        //Shazzad
         EdgeOptions options = new EdgeOptions();
         options.addArguments("--remote-allow-origins=*");
         options.addArguments("start-maximized");
-        // options.addArguments("--incognito");
-        // options.addArguments("--headless=new");
+        options.addArguments("--incognito");
+        options.addArguments("--headless=new");
         return options;
     }
 
