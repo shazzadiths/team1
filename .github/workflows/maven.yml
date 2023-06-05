@@ -35,3 +35,9 @@ jobs:
 
       - name: Maven Selenium Test
         run: mvn test -Dtest=WebShopSeleniumTests
+
+      - name: Audit Webshop Url using Lighthouse
+        uses: justinribeiro/lighthouse-action@master
+        with:
+          url: https://webshop-agil-testautomatiserare.netlify.app
+          wptConnectionSpeed: threegfast
