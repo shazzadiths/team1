@@ -45,7 +45,7 @@ public class StepDefinitionWebShop {
 
     @Given("User visits webpage with chrome driver")
     public void user_visits_webpage_with_chrome_driver()  {
-        BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
+        BaseClass.NavigatePage("https://webshop-team1.netlify.app/");
     }
     @Then("Title should be {string}")
     public void title_should_be(String string) {
@@ -122,43 +122,6 @@ public class StepDefinitionWebShop {
         assertTrue(jewelryLinkText, "Text is not visible");
 
     }
-    //Emma
-    /*
-    @When("User adds one item to cart")
-    public void user_adds_one_item_to_cart() throws InterruptedException {
-        Thread.sleep(3000);
-        WebElement addToCart = BaseClass.driver.findElement(By.className("btn-primary"));
-        addToCart.click();
-        WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
-        Thread.sleep(6000);
-        checkoutButton.click();
-
-    }
-
-
-    //Emma
-    @Then("Product in cart should be {int}")
-    public void product_in_cart_should_be(Integer int1) throws InterruptedException {
-        Thread.sleep(3000);
-        WebElement oneProductInCart = BaseClass.driver.findElement(By.xpath("//*[@id=\"buttonSize\"]"));
-        assertEquals("1", oneProductInCart.getText());
-
-    }
-    //Emma
-    @And("User removes item")
-    public void user_removes_item() {
-        WebElement removeOneProduct = BaseClass.driver.findElement(By.cssSelector("button[onclick='removeItem(1)']"));
-        removeOneProduct.click();
-    }
-    //Emma
-    @Then("Item in cart should be {int}")
-    public void item_in_cart_should_be(Integer int1) {
-        WebElement yourCart = BaseClass.driver.findElement(By.id("cartSize"));
-        assertEquals("0", yourCart.getText());
-
-    }
-
-    */
     //Emma
     @When("User navigates to check out form by clicking on check out button")
     public void user_navigates_to_check_out_form_by_clicking_on_check_out_button() {
@@ -440,7 +403,7 @@ public class StepDefinitionWebShop {
     public void user_Should_See_The_Four_Links(String expectedLinksText) throws InterruptedException {
         Thread.sleep(2000);
         List<WebElement> links = BaseClass.driver.findElements(By.cssSelector(".justify-content-end li"));
-        assertEquals(expectedLinksText, links.get(0).getText() + "," + links.get(1).getText() + "," + links.get(2).getText() + "," + links.get(3).getText());
+        assertEquals(expectedLinksText, links.get(0).getText() + "," + links.get(1).getText() + "," + links.get(2).getText() );
 
     }
 
@@ -498,19 +461,7 @@ public class StepDefinitionWebShop {
         assertEquals(expectedCategorySearch,searchText.getAttribute("value"));
     }
 
-/*
-    @Then("Description text should be {string}")
-    public void description_Text_Should_Be(String expectedDescriptionText) {
 
-        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        BaseClass.driver.findElement(By.linkText("Electronics")).click();
-        BaseClass.driver.manage().timeouts().implicitlyWait(Duration.ofSeconds(10));
-        List<WebElement> elements = BaseClass.driver.findElements(By.cssSelector("main[id=main] div"));
-        assertEquals(expectedDescriptionText, elements.get(elements.size() - 1).findElement(By.cssSelector("p.card-text")).getText());
-
-    }
-
- */
 
 
 
