@@ -45,7 +45,8 @@ public class StepDefinitionAPI {
 
     @BeforeEach
     public void before(){
-        baseURI = "https://produktapi.herokuapp.com";
+        //baseURI = "https://produktapi.herokuapp.com";
+        baseURI = "https://iths-team1.herokuapp.com";    // Ny länk
     }
 
 //Emma Dahl

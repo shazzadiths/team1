@@ -31,12 +31,12 @@ public class WebShopSeleniumTests {
 
     static void beforeTest()
         {
-          BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
-
+         // BaseClass.NavigatePage("https://webshop-agil-testautomatiserare.netlify.app/");
+            BaseClass.NavigatePage("https://webshop-team1.netlify.app/");  //ny länk
         }
 
         // team1länk:  https://iths-team1.herokuapp.com/products
-
+        // https://webshop-team1.netlify.app/
 
     @Test
     public void verifyWebShopTitle() {  //Shazzad
@@ -151,7 +151,8 @@ public class WebShopSeleniumTests {
         WebElement checkoutButton = BaseClass.driver.findElement(By.className("btn-warning"));
         checkoutButton.click();
         String actualURL = BaseClass.driver.getCurrentUrl();
-        String expectedURL = "https://webshop-agil-testautomatiserare.netlify.app/checkout.html";
+      //  String expectedURL = "https://webshop-agil-testautomatiserare.netlify.app/checkout.html";
+        String expectedURL = "https://webshop-team1.netlify.app/checkout.html";  //Ny länk
         assertEquals(expectedURL, actualURL);
     }
 
@@ -246,7 +247,7 @@ public class WebShopSeleniumTests {
         assertEquals("Home", links.get(0).getText());
         assertEquals("Shop", links.get(1).getText());
         assertEquals("Checkout", links.get(2).getText());
-        assertEquals("About", links.get(3).getText());
+      //  assertEquals("About", links.get(3).getText());    // I ny länk finns inte about
     }
     //Somayeh
     @Test
