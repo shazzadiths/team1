@@ -175,7 +175,7 @@ Feature: Test-Webshop
     And Close browser
   Scenario: Verify the four links on botten of page and the text should be visible
     Given User visits webpage with chrome driver
-    Then User should see the four links "Home,Shop,Checkout,About"
+    Then User should see the four links "Home,Shop,Checkout"
     And Close browser
   Scenario: Text of link HOME should be visible and correct
     Given User visits webpage with chrome driver
@@ -200,9 +200,5 @@ Feature: Test-Webshop
     Then The input should be the value user writes in the dialog box
     And Close browser
 
-#Scenario: check if last description for last link is clickable and works as expected
- # Given User visits webpage with chrome driver
-  #When User navigates to all products page by shop button
- #Then Description text should be "En lite böjd skär Men den funkar ändå!"
-  #And Close browser
+
 
