@@ -98,6 +98,7 @@ public class BaseClass {        //Shazzad
                 .scrollByAmount(0, deltaY)
                 .perform();
     }
+    //Anjhana
     public static void javaScriptClick(WebElement element) {
         ((JavascriptExecutor) driver).executeScript("arguments[0].click();", element);
     }
