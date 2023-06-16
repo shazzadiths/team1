@@ -26,37 +26,37 @@ import java.util.List;
     List<String> categoriesList;
     List<String> availableCategories = List.of("electronics", "jewelery", "men's clothing", "women's clothing");
     List<Integer> availableCategoriesSize = List.of(6, 4, 4, 6);
-
+//Anjhana
     @BeforeEach
     void setup() {
         productService = new ProductService(repository);
         productsList = productService.getAllProducts();
         categoriesList = productService.getAllCategories();
     }
-
+    //Anjhana
     @Test
     void checkProductNotNull() {
         Assert.assertTrue(productsList.size() > 0);
         Assert.assertNotNull(productsList);
     }
-
+    //Anjhana
     @Test
     void checkMaxProduct() {
         Assert.assertEquals(productsList.size(), 20);
     }
-
+    //Anjhana
     @Test
     void checkCategoriesNotNull() {
         Assert.assertTrue(categoriesList.size() > 0);
         Assert.assertNotNull(categoriesList);
     }
-
+    //Anjhana
     @Test
     void checkMaxCategories() {
         Assert.assertEquals(categoriesList.size(), 4);
         Assert.assertEquals(categoriesList, availableCategories);
     }
-
+    //Anjhana
     @Test
     void verifyEachCategorySize() {
         int index = 0;
@@ -67,30 +67,31 @@ import java.util.List;
             index++;
         }
     }
-
+    //Anjhana
     @Test
     void verifyInvalidCategory() {
         Assert.assertEquals(productService.getProductsByCategory("test").size(), 0);
         Assert.assertTrue(productService.getProductsByCategory("test").isEmpty());
     }
-
+    //Anjhana
     @Test
     void verifyEmptyCategory() {
         Assert.assertEquals(productService.getProductsByCategory(" ").size(), 0);
         Assert.assertTrue(productService.getProductsByCategory(" ").isEmpty());
     }
-
+    //Anjhana
     @Test
     void verifyNullCategory() {
         Assert.assertEquals(productService.getProductsByCategory(null).size(), 0);
         Assert.assertTrue(productService.getProductsByCategory(null).isEmpty());
     }
-
+    //Anjhana
     @Test
     void verifyDeletionOfUnavailableProductId(){
         int productCount= productService.getAllProducts().size();
         Assert.assertThrows(EntityNotFoundException.class, () -> productService.deleteProduct(21));
     }
+    //Anjhana
     @Test
     void verifyAddAndRemoveProduct() {
         int currentProductCount = productService.getAllProducts().size();
@@ -105,7 +106,7 @@ import java.util.List;
         Assert.assertEquals(updatedProductCount,currentProductCount);
     }
 
-
+    //Anjhana
     @Test
     void verifyUpdatingAProduct(){
         Product currentProduct = productService.getProductById(2);
